@@ -17,8 +17,6 @@
 
 <owl:Class rdf:about="#Person">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Any person</rdfs:comment>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A person</rdfs:label>
 </owl:Class>
 
 <Person rdf:about="#Emily">
