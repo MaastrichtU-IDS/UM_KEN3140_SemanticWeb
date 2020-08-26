@@ -3,3 +3,4 @@ SPARQLWrapper
 Owlready2
 networkx
 ontospy[FULL]
+cython
