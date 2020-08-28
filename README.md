@@ -6,20 +6,15 @@ Repository with resources for the Semantic Web course given by the Institute of 
 
 It contains:
 
-* A Jupyter Notebook to create and edit OWL ontologies using the OWLAPI  with Java (using a jupyter notebook Java kernel)
-* A Jupyter Notebook to create and edit RDF using `rdflib`
-* A Jupyter Notebook to create and edit OWL ontologies using `owlready2`
-* A Docker image and docker-compose definition to run those Notebooks with all requirements easily
-
-## Tools documentation
-
-* [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/)
-* [rdflib documentation](https://rdflib.readthedocs.io/en/stable/)
-* [Ontospy documentation](http://lambdamusic.github.io/Ontospy)
+* Documentation to install and run the JupyterLab environment with [Java kernel](https://github.com/SpencerPark/IJava) for the Semantic Web course.
+* A Java Notebook to create and edit OWL ontologies using the [OWLAPI](https://github.com/owlcs/owlapi) 
+* Python notebooks
+  * create and edit RDF using `rdflib`
+  * create and edit OWL ontologies using `owlready2`
 
 ## Start JupyterLab
 
-We will need to run Java using a JupyterLab Java kernel, the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared
+We will need to run Java using a JupyterLab Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared.
 
 ### Install Docker
 
@@ -37,36 +32,29 @@ We will need to run Java using a JupyterLab Java kernel, the easiest is to run a
     choco install docker-toolbox -ia /COMPONENTS="kitematic,virtualbox,dockercompose" -ia /TASKS="desktopicon,modifypath,upgradevm"
     ```
 
-> On Windows, we strongly recommend you to use PowerShell or WSL2 (avoid the old CMD)
+> On Windows, we strongly recommend you to use **PowerShell** or WSL2 (avoid the old CMD)
 
 ### Run with Docker
 
-Clone this repository using [git](https://git-scm.com/):
+Create an new folder for your project, and go in this directory:
 
 ```bash
-git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
+mkdir my-project
+cd my-project
 ```
 
-> See the [instructions to install git.](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) It can also be done from within JupyterLab once started.
-
-Go to the cloned folder:
-
-```bash
-cd UM_KEN3140_SemanticWeb
-```
-
-On Linux and MacOS, this command will share the current directory to the container (to run in the Terminal at the root of the git repository):
+* On **Linux** and **MacOS**, this command will share the current directory to the container:
 
 ```bash
 docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
 ```
 
-> Shared in `/home/jovyan/work` in the container
+> Your current directory is shared in `/home/jovyan` in the Docker container.
 
-The same command on Windows, the variable for the current directory is different:
+* The same command on **Windows**, the variable for the current directory is different:
 
 ```powershell
-docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
+docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
 ```
 
 ### Request a JupyterLab instance on our servers
@@ -81,8 +69,11 @@ Access your JupyterLab instance, open a **Terminal** window, and clone this repo
 git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
 ```
 
-### See also
+## Tools documentation
 
-[WebVOWL](http://www.visualdataweb.de/webvowl/), d3.js graph viewer: 
+Links to documentation of the different tools used in the course:
 
-http://www.visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/master/ontologies/my_family_ontology.rdf
+* [OWLAPI documentation](https://github.com/owlcs/owlapi/wiki/Documentation)
+* [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/)
+* [rdflib documentation](https://rdflib.readthedocs.io/en/stable/)
+* [Ontospy documentation](http://lambdamusic.github.io/Ontospy)
