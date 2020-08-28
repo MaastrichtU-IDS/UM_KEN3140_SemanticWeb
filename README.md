@@ -21,9 +21,7 @@ It contains:
 
 We will need to run Java using a JupyterLab Java kernel, the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared
 
-### Using Docker
-
-#### Install Docker
+### Install Docker
 
 * Install Docker Desktop on MacOS, Linux, Windows **Pro/Enterprise/Education**: https://docs.docker.com/get-docker/
 
@@ -41,7 +39,7 @@ We will need to run Java using a JupyterLab Java kernel, the easiest is to run a
 
 > On Windows, we strongly recommend you to use PowerShell or WSL2 (avoid the old CMD)
 
-#### Run with Docker
+### Run with Docker
 
 Clone this repository using [git](https://git-scm.com/):
 
@@ -60,7 +58,7 @@ cd UM_KEN3140_SemanticWeb
 On Linux and MacOS, this command will share the current directory to the container (to run in the Terminal at the root of the git repository):
 
 ```bash
-docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
+docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
 ```
 
 > Shared in `/home/jovyan/work` in the container
