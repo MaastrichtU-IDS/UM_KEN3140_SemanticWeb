@@ -9,7 +9,7 @@ It contains:
 * A Jupyter Notebook to create and edit OWL ontologies using `owlready2`
 * A Docker image and docker-compose definition to run those Notebooks with all requirements easily
 
-Additional documentations:
+### Tools documentation
 
 * [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/)
 * [rdflib documentation](https://rdflib.readthedocs.io/en/stable/)
@@ -17,7 +17,7 @@ Additional documentations:
 
 ### Start JupyterLab
 
-Start JupyterLab with Java kernel installed locally from the root folder of the git repository:
+You can user [Docker containers](https://docs.docker.com/get-docker/) to start JupyterLab with Java kernel installed locally from the root folder of the git repository:
 
 ```bash
 docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
@@ -34,6 +34,12 @@ docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan/work -e JUPYTER_ENABLE_L
 ### Request a JupyterLab instance
 
 If you cannot run JupyterLab with a Java kernel locally or using Docker, you can request a JupyterLab instance to be created on the UM [Data Science Research Infrastructure](https://maastrichtu-ids.github.io/dsri-documentation/). You will be able to access JupyterLab via a web UI accessible from the UM network (you might need to use the [VPN](https://vpn.maastrichtuniversity.nl/))
+
+Access your JupyterLab instance, open a **Terminal** tab and clone the repository:
+
+```bash
+git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
+```
 
 ### See also
 
