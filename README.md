@@ -1,20 +1,23 @@
-# Semantic Web course
+# IDS Semantic Web course
 
-Repository with resources for the Semantic Web course given by the Institute of Data Science at Maastricht University.
+Repository with resources for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
 
 > We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes.
 
 It contains:
 
-* Documentation to install and run the JupyterLab environment with [Java kernel](https://github.com/SpencerPark/IJava) for the Semantic Web course.
+* Documentation to install and run the Docker JupyterLab environment with [Java kernel](https://github.com/SpencerPark/IJava) for the Semantic Web course.
 * A Java Notebook to create and edit OWL ontologies using the [OWLAPI](https://github.com/owlcs/owlapi) 
 * Python notebooks
   * create and edit RDF using `rdflib`
-  * create and edit OWL ontologies using `owlready2`
+  * create and edit OWL ontologies using `Owlready2`
+  * perform reasoning using `OWL-RL`
 
 ## Start JupyterLab
 
-We will need to run Java using a JupyterLab Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared.
+We will need to run Java using a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) with Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared.
+
+> Jupyter notebooks are usually used with Python or R applications, but they can be used with any programming language as long as a kernel as been implemented for this language.
 
 ### Install Docker
 
