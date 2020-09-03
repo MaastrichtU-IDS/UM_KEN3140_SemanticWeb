@@ -1,0 +1,2 @@
+@prefix um: <http://tev> .
+um:kody um:name "Kody Moodley"@en . 
