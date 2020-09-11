@@ -55,6 +55,6 @@ Links to documentation of the different tools used in the course:
 * Convert Jupyter Notebook to HTML slides:
 
 ```bash
-jupyter nbconvert Lab4_SPARQL_demo.ipynb --to slides
+jupyter nbconvert lab4-sparql/Lab4_SPARQL_demo.ipynb --to slides --output-dir docs
 ```
 

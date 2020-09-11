@@ -13334,10 +13334,13 @@ a.anchor-link {
 <li>Triplestore can be fully queried through a publicly available SPARQL endpoint URL</li>
 <li>Some solutions enable user management, but natively SPARQL gives the same access to all its users</li>
 </ul>
-<p>We will use the DBpedia SPARQL endpoint: <strong><a href="https://dbpedia.org/sparql">https://dbpedia.org/sparql</a></strong></p>
-<blockquote><p>DBpedia is a project to represent (parts of) Wikipedia as RDF, it has been used has a playground for the Semantic Web for years. The data is not controlled or curated, which lead to poor data quality (don't be surprised to find weird things)</p>
+<p>We will use the DBpedia SPARQL endpoint:</p>
+<blockquote><p><strong><a href="https://dbpedia.org/sparql">https://dbpedia.org/sparql</a></strong></p>
 </blockquote>
-<p>You can use a nicer query editor that can query any public SPARQL endpoint: <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong></p>
+<p><a href="https://wiki.dbpedia.org/">DBpedia</a> is a project to represent (parts of) Wikipedia as RDF, it has been used has a playground for the Semantic Web for years. The data is not controlled or curated, which lead to poor data quality (don't be surprised to find weird things)</p>
+<p>You can use a nicer query editor that can query any public SPARQL endpoint:</p>
+<blockquote><p><strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong></p>
+</blockquote>
 
 </div>
 </div>
@@ -13346,7 +13349,7 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Use-the-SPARQL-kernel">Use the SPARQL kernel<a class="anchor-link" href="#Use-the-SPARQL-kernel">&#182;</a></h1><p>This notebook uses the SPARQL Kernel to define and <strong>execute SPARQL queries in the notebook</strong> codeblocks.
-To install the SPARQL Kernel in your JupyterLab:</p>
+To <strong>install the SPARQL Kernel</strong> in your JupyterLab:</p>
 <div class="highlight"><pre><span></span>pip install sparqlkernel --user
 jupyter sparqlkernel install --user
 </pre></div>
@@ -13362,7 +13365,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="x">%endpoint http://dbpedia.org/sparql</span>
@@ -13530,7 +13533,7 @@ jupyter sparqlkernel install --user
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">WHERE</span> <span class="p">{</span>
-  <span class="nv">?book</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
+    <span class="nv">?book</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -13549,7 +13552,7 @@ jupyter sparqlkernel install --user
 
 
 <div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>book</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Havana_Storm" target="_other">http://dbpedia.org/resource/Havana_Storm</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Awful_German_Language" target="_other">http://dbpedia.org/resource/The_Awful_German_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Urmonotheismus" target="_other">http://dbpedia.org/resource/Urmonotheismus</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/1066_and_All_That" target="_other">http://dbpedia.org/resource/1066_and_All_That</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/2010:_Odyssey_Two" target="_other">http://dbpedia.org/resource/2010:_Odyssey_Two</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/401(k)" target="_other">http://dbpedia.org/resource/401(k)</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/A_Crown_of_Swords" target="_other">http://dbpedia.org/resource/A_Crown_of_Swords</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/A_Dictionary_of_the_English_Language" target="_other">http://dbpedia.org/resource/A_Dictionary_of_the_English_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Adultery" target="_other">http://dbpedia.org/resource/Adultery</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland" target="_other">http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Anne_of_Green_Gables" target="_other">http://dbpedia.org/resource/Anne_of_Green_Gables</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Ante-Nicene_Fathers" target="_other">http://dbpedia.org/resource/Ante-Nicene_Fathers</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Around_the_World_in_Eighty_Days" target="_other">http://dbpedia.org/resource/Around_the_World_in_Eighty_Days</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Astronomy" target="_other">http://dbpedia.org/resource/Astronomy</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/BBC_World_News" target="_other">http://dbpedia.org/resource/BBC_World_News</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Bacteriology" target="_other">http://dbpedia.org/resource/Bacteriology</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Balthasar_Behem_Codex" target="_other">http://dbpedia.org/resource/Balthasar_Behem_Codex</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Between_Planets" target="_other">http://dbpedia.org/resource/Between_Planets</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Beyond_This_Horizon" target="_other">http://dbpedia.org/resource/Beyond_This_Horizon</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Biosalinity" target="_other">http://dbpedia.org/resource/Biosalinity</a></td></tr></table><div class="tinfo">Total: 10000, Shown: 20</div></div>
+<div class="krn-spql"><table><tr class=hdr><th>book</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Havana_Storm" target="_other">http://dbpedia.org/resource/Havana_Storm</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Awful_German_Language" target="_other">http://dbpedia.org/resource/The_Awful_German_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Urmonotheismus" target="_other">http://dbpedia.org/resource/Urmonotheismus</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Modern_C_Design" target="_other">http://dbpedia.org/resource/Modern_C_Design</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/1066_and_All_That" target="_other">http://dbpedia.org/resource/1066_and_All_That</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/2010:_Odyssey_Two" target="_other">http://dbpedia.org/resource/2010:_Odyssey_Two</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/401(k)" target="_other">http://dbpedia.org/resource/401(k)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/A_Crown_of_Swords" target="_other">http://dbpedia.org/resource/A_Crown_of_Swords</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/A_Dictionary_of_the_English_Language" target="_other">http://dbpedia.org/resource/A_Dictionary_of_the_English_Language</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Adultery" target="_other">http://dbpedia.org/resource/Adultery</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland" target="_other">http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Anne_of_Green_Gables" target="_other">http://dbpedia.org/resource/Anne_of_Green_Gables</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Ante-Nicene_Fathers" target="_other">http://dbpedia.org/resource/Ante-Nicene_Fathers</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Around_the_World_in_Eighty_Days" target="_other">http://dbpedia.org/resource/Around_the_World_in_Eighty_Days</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Astronomy" target="_other">http://dbpedia.org/resource/Astronomy</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/BBC_World_News" target="_other">http://dbpedia.org/resource/BBC_World_News</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Bacteriology" target="_other">http://dbpedia.org/resource/Bacteriology</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Balthasar_Behem_Codex" target="_other">http://dbpedia.org/resource/Balthasar_Behem_Codex</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Between_Planets" target="_other">http://dbpedia.org/resource/Between_Planets</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Beyond_This_Horizon" target="_other">http://dbpedia.org/resource/Beyond_This_Horizon</a></td></tr></table><div class="tinfo">Total: 10000, Shown: 20</div></div>
 </div>
 
 </div>
@@ -13590,11 +13593,11 @@ jupyter sparqlkernel install --user
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">WHERE</span> <span class="p">{</span>
-  <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
-  <span class="nv">?book</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
+    <span class="nv">?book</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -13647,11 +13650,11 @@ jupyter sparqlkernel install --user
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A turtle-like syntax can also be used to make the query more readable:</p>
-<div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">WHERE</span> <span class="p">{</span>
-  <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span> 
-      <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span> 
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -13700,12 +13703,13 @@ jupyter sparqlkernel install --user
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="nv">?author</span>
 <span class="k">WHERE</span> <span class="p">{</span>
-  <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-    <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
-<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
+<span class="p">}</span> 
+<span class="k">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 
     </div>
@@ -13748,11 +13752,11 @@ jupyter sparqlkernel install --user
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="nv">?author</span>
 <span class="k">WHERE</span> <span class="p">{</span>
-  <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-    <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
 <span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 
@@ -13808,7 +13812,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -13869,7 +13873,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14072,18 +14076,17 @@ jupyter sparqlkernel install --user
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p><code>ORDER BY</code> number of pages (ascending by default)</p>
+<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20(%3Fpages"><code>ORDER BY</code> the books by number of pages</a>%0ALIMIT%205&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C<em>%2F</em>%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C<em>%2F</em>%3Bq%3D0.9&amp;outputFormat=table)</strong> (in ascending order by default)</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
 <span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
 <span class="k">SELECT</span> <span class="nv">?name</span> <span class="nv">?author</span> <span class="nv">?pages</span> <span class="nv">?book</span>
 <span class="k">WHERE</span> <span class="p">{</span>
@@ -14163,7 +14166,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14237,7 +14240,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14293,7 +14296,7 @@ jupyter sparqlkernel install --user
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14349,7 +14352,25 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SPARQL-query-breakdown">SPARQL query breakdown<a class="anchor-link" href="#SPARQL-query-breakdown">&#182;</a></h1><p><img src="sparql_query_breakdown.png"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Going-further">Going further<a class="anchor-link" href="#Going-further">&#182;</a></h1><ul>
+<li>Wikidata SPARQL queries around the SARS-CoV-2 virus and pandemic: <a href="https://egonw.github.io/SARS-CoV-2-Queries">https://egonw.github.io/SARS-CoV-2-Queries</a></li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 
