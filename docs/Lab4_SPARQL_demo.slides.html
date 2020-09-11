@@ -14076,14 +14076,14 @@ jupyter sparqlkernel install --user
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20(%3Fpages">ORDER BY the books by number of pages</a>%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C<em>%2F</em>%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C<em>%2F</em>%3Bq%3D0.9&amp;outputFormat=table)</strong> (in ascending order by default)</p>
+<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code> the books by number of pages</a></strong> (in ascending order by default)</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14095,7 +14095,7 @@ jupyter sparqlkernel install --user
         <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">;</span>
         <span class="nn">dbo</span><span class="p">:</span><span class="nt">numberOfPages</span> <span class="nv">?pages</span> <span class="p">.</span>
 <span class="p">}</span> 
-<span class="k">ORDER BY</span> <span class="p">(</span><span class="nv">?pages</span><span class="p">)</span>
+<span class="k">ORDER BY</span> <span class="nv">?pages</span>
 <span class="k">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 
@@ -14116,38 +14116,27 @@ jupyter sparqlkernel install --user
 <div class="output_html rendered_html output_subarea ">
 <div class="krn-spql"><table><tr class=hdr><th>name</th>
 <th>author</th>
-<th>pages</th>
-<th>book</th></tr><tr class=odd><td class=val>Liberia; or, Mr. Peyton's Experiments</td>
+<th>pages</th></tr><tr class=odd><td class=val>Liberia; or, Mr. Peyton's Experiments</td>
 <td class=val><a href="http://dbpedia.org/resource/Sarah_Josepha_Hale" target="_other">http://dbpedia.org/resource/Sarah_Josepha_Hale</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/Liberia;_or,_Mr._Peyton's_Experiments" target="_other">http://dbpedia.org/resource/Liberia;_or,_Mr._Peyton's_Experiments</a></td></tr><tr class=even><td class=val>The Cabin and Parlor; or, Slaves and Masters</td>
+<td class=val>0</td></tr><tr class=even><td class=val>The Cabin and Parlor; or, Slaves and Masters</td>
 <td class=val><a href="http://dbpedia.org/resource/Charles_Jacobs_Peterson" target="_other">http://dbpedia.org/resource/Charles_Jacobs_Peterson</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Cabin_and_Parlor;_or,_Slaves_and_Masters" target="_other">http://dbpedia.org/resource/The_Cabin_and_Parlor;_or,_Slaves_and_Masters</a></td></tr><tr class=odd><td class=val>The Lofty and the Lowly, or Good in All and None All Good</td>
+<td class=val>0</td></tr><tr class=odd><td class=val>The Lofty and the Lowly, or Good in All and None All Good</td>
 <td class=val><a href="http://dbpedia.org/resource/Maria_Jane_McIntosh" target="_other">http://dbpedia.org/resource/Maria_Jane_McIntosh</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Lofty_and_the_Lowly,_or_Good_in_All_and_None_All_Good" target="_other">http://dbpedia.org/resource/The_Lofty_and_the_Lowly,_or_Good_in_All_and_None_All_Good</a></td></tr><tr class=even><td class=val>Geological Evidences of the Antiquity of Man</td>
+<td class=val>0</td></tr><tr class=even><td class=val>Geological Evidences of the Antiquity of Man</td>
 <td class=val><a href="http://dbpedia.org/resource/Charles_Lyell" target="_other">http://dbpedia.org/resource/Charles_Lyell</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/Geological_Evidences_of_the_Antiquity_of_Man" target="_other">http://dbpedia.org/resource/Geological_Evidences_of_the_Antiquity_of_Man</a></td></tr><tr class=odd><td class=val>Geological Evidences of the Antiquity of Man</td>
+<td class=val>0</td></tr><tr class=odd><td class=val>Geological Evidences of the Antiquity of Man</td>
 <td class=val><a href="http://dbpedia.org/resource/Charles_Lyell" target="_other">http://dbpedia.org/resource/Charles_Lyell</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/Geological_Evidences_of_the_Antiquity_of_Man" target="_other">http://dbpedia.org/resource/Geological_Evidences_of_the_Antiquity_of_Man</a></td></tr><tr class=even><td class=val>The Vampyre</td>
+<td class=val>0</td></tr><tr class=even><td class=val>The Vampyre</td>
 <td class=val><a href="http://dbpedia.org/resource/John_William_Polidori" target="_other">http://dbpedia.org/resource/John_William_Polidori</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Vampyre" target="_other">http://dbpedia.org/resource/The_Vampyre</a></td></tr><tr class=odd><td class=val>Der Vampyr (Polidori)</td>
+<td class=val>0</td></tr><tr class=odd><td class=val>Der Vampyr (Polidori)</td>
 <td class=val><a href="http://dbpedia.org/resource/John_William_Polidori" target="_other">http://dbpedia.org/resource/John_William_Polidori</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Vampyre" target="_other">http://dbpedia.org/resource/The_Vampyre</a></td></tr><tr class=even><td class=val>El vampiro (1819)</td>
+<td class=val>0</td></tr><tr class=even><td class=val>El vampiro (1819)</td>
 <td class=val><a href="http://dbpedia.org/resource/John_William_Polidori" target="_other">http://dbpedia.org/resource/John_William_Polidori</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Vampyre" target="_other">http://dbpedia.org/resource/The_Vampyre</a></td></tr><tr class=odd><td class=val>Le Vampire (nouvelle)</td>
+<td class=val>0</td></tr><tr class=odd><td class=val>Le Vampire (nouvelle)</td>
 <td class=val><a href="http://dbpedia.org/resource/John_William_Polidori" target="_other">http://dbpedia.org/resource/John_William_Polidori</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Vampyre" target="_other">http://dbpedia.org/resource/The_Vampyre</a></td></tr><tr class=even><td class=val>Il vampiro (racconto)</td>
+<td class=val>0</td></tr><tr class=even><td class=val>Il vampiro (racconto)</td>
 <td class=val><a href="http://dbpedia.org/resource/John_William_Polidori" target="_other">http://dbpedia.org/resource/John_William_Polidori</a></td>
-<td class=val>0</td>
-<td class=val><a href="http://dbpedia.org/resource/The_Vampyre" target="_other">http://dbpedia.org/resource/The_Vampyre</a></td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
+<td class=val>0</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
 </div>
 
 </div>
@@ -14364,8 +14353,22 @@ jupyter sparqlkernel install --user
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Search-on-DBpedia">Search on DBpedia<a class="anchor-link" href="#Search-on-DBpedia">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL query on DBpedia</p>
+<blockquote><p>Find DBpedia classes and relations: search on google, e.g. <code>dbpedia capital</code></p>
+</blockquote>
+<ul>
+<li>The capital (<a href="http://dbpedia.org/ontology/capital">dbo:capital</a> of the country in which authors of books are born (<a href="http://dbpedia.org/ontology/birthPlace">dbo:birthPlace</a>) (limit to 10)</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Going-further">Going further<a class="anchor-link" href="#Going-further">&#182;</a></h1><ul>
 <li>Wikidata SPARQL queries around the SARS-CoV-2 virus and pandemic: <a href="https://egonw.github.io/SARS-CoV-2-Queries">https://egonw.github.io/SARS-CoV-2-Queries</a></li>
+<li>Use <a href="http://prefix.cc/">prefix.cc</a> to resolve mysterious prefixes.</li>
 </ul>
 
 </div>
