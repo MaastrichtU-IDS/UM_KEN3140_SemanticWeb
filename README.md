@@ -1,17 +1,8 @@
 # IDS Semantic Web course
 
-Repository with resources for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
+Repository with resources and materials for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
 
 > We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes.
-
-It contains:
-
-* Documentation to install and run the Docker JupyterLab environment with [Java kernel](https://github.com/SpencerPark/IJava) for the Semantic Web course.
-* A Java Notebook to create and edit OWL ontologies using the [OWLAPI](https://github.com/owlcs/owlapi) 
-* Python notebooks
-  * create and edit RDF using `rdflib`
-  * create and edit OWL ontologies using `Owlready2`
-  * perform reasoning using `OWL-RL`
 
 ## Start JupyterLab
 
@@ -19,34 +10,18 @@ We will need to run Java using a [JupyterLab](https://jupyterlab.readthedocs.io/
 
 > Jupyter notebooks are usually used with Python or R applications, but they can be used with any programming language as long as a kernel as been implemented for this language.
 
-### Install Docker
-
-* Install Docker Desktop on MacOS, Linux, Windows **Pro/Enterprise/Education**: https://docs.docker.com/get-docker/
-
-* Install Docker Desktop on **Windows Home** using WSL2: 
-
-  * [Enable WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (Windows Subsystem for Linux)
-
-  * [Install Docker Desktop](https://docs.docker.com/docker-for-windows/install-windows-home/) on Windows Home
-
-  * You can also use [Chocolatey](https://chocolatey.org/) to install Docker on Windows Home without providing a DockerHub account:
-
-    ```bash
-    choco install docker-toolbox -ia /COMPONENTS="kitematic,virtualbox,dockercompose" -ia /TASKS="desktopicon,modifypath,upgradevm"
-    ```
-
-> On Windows, we strongly recommend you to use **PowerShell** or WSL2 (avoid the old CMD)
-
 ### Run with Docker
 
-Create an new folder for your project, and go in this directory:
+[Use Docker](https://docs.docker.com/get-docker/) to run JupyterLab with Java in a container.
+
+Clone this directory:
 
 ```bash
-mkdir my-project
-cd my-project
+git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
+cd UM_KEN3140_SemanticWeb
 ```
 
-* On **Linux** and **MacOS**, this command will share the current directory to the container:
+* On **Linux** and **MacOS**, start JupyterLab on http://localhost:8888 and share the current directory in the container:
 
 ```bash
 docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
@@ -54,22 +29,19 @@ docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=ye
 
 > Your current directory is shared in `/home/jovyan` in the Docker container.
 
-* The same command on **Windows**, the variable for the current directory is different:
+* The same command on **Windows**, the variable to share the current directory is different:
 
 ```powershell
 docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
 ```
 
-### Request a JupyterLab instance on our servers
+### Install the SPARQL kernel
 
-If you cannot run JupyterLab with a Java kernel locally or using Docker, you can request a JupyterLab instance to be created on the UM [Data Science Research Infrastructure](https://maastrichtu-ids.github.io/dsri-documentation/). 
-
-You will be able to access JupyterLab via a web UI accessible from the UM network (you might need to use the [VPN](https://vpn.maastrichtuniversity.nl/))
-
-Access your JupyterLab instance, open a **Terminal** window, and clone this repository:
+Install the SPARQL kernel to run SPARQL notebooks, run this command locally or in the Docker container depending on your installation.
 
 ```bash
-git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
+pip install sparqlkernel --user
+jupyter sparqlkernel install --user
 ```
 
 ## Tools documentation
@@ -80,3 +52,9 @@ Links to documentation of the different tools used in the course:
 * [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/)
 * [rdflib documentation](https://rdflib.readthedocs.io/en/stable/)
 * [Ontospy documentation](http://lambdamusic.github.io/Ontospy)
+* Convert Jupyter Notebook to HTML slides:
+
+```bash
+jupyter nbconvert Lab4_SPARQL_demo.ipynb --to slides
+```
+

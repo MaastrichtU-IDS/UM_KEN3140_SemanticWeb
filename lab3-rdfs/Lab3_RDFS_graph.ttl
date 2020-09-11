@@ -1,0 +1,18 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.com/> .
+
+# Schema
+#:hasMother rdfs:subPropertyOf :hasParent .	# Lab 3 - Task 2
+#:isMotherOf rdfs:subPropertyOf :loves . 	# Lab 3 - Task 2
+#:Teenager rdfs:subClassOf :Adolescent . 	# Lab 3 - Task 1
+#:hasParent									# Lab 3 - Task 3
+#  rdfs:range :Person ;						# Lab 3 - Task 3
+#  rdfs:domain :Person .					# Lab 3 - Task 3
+
+# Data
+:angela :isMotherOf :kevin .
+:kevin
+  :hasMother :angela ;
+  a :Teenager ;
+  :hasAge "17.5"^^xsd:integer .

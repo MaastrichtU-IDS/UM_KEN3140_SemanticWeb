@@ -1,2 +1,2 @@
-@prefix um: <http://tev> .
+@prefix um: <//paste IRI here//> .
 um:kody um:name "Kody Moodley"@en . 

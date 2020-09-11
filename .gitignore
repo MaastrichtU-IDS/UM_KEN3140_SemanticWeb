@@ -1,2 +1,11 @@
 .ipynb_checkpoints/
 .virtual_documents/
+.cache/
+.bash_history
+.cache/
+.ipython/
+.jupyter/
+.local/
+
+*.zip
+apache-jena-3.16.0/

@@ -1,0 +1,6 @@
+PREFIX schema: <https://schema.org/>
+PREFIX family: <https://my-family.org/>
+SELECT * 
+WHERE {
+    ?entity a ?type .
+}
