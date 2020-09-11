@@ -14107,15 +14107,135 @@ jupyter sparqlkernel install --user
 </blockquote>
 <div class="highlight"><pre><span></span><span class="k">FILTER</span><span class="p">((</span><span class="nv">?pages</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span> <span class="o">||</span> <span class="nf">contains</span><span class="p">(</span><span class="nv">?name</span><span class="p">,</span><span class="s">&quot;grand&quot;</span><span class="p">))</span>
 </pre></div>
-<p>Partially also expressible through graph pattern:</p>
+<p>Expressible through graph pattern:</p>
 <ul>
-<li>Conjunction corresponds to specifications of several filters</li>
-<li>Disjunction corresponds to application of filters in alternative patterns</li>
+<li><strong>Conjunction</strong> corresponds to specifications of <strong>several filters</strong>.</li>
+<li><strong>Disjunction</strong> corresponds to application of filters in <strong>alternative patterns</strong> (use <code>UNION</code>).</li>
 </ul>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Return-results-from-different-patterns">Return results from different patterns<a class="anchor-link" href="#Return-results-from-different-patterns">&#182;</a></h1><p>Use <code>UNION</code> to return Book name wherever it is defined with <code>rdfs:label</code> or <code>dbp:name</code>:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="p">{</span>
+        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+            <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
+        <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">UNION</span> <span class="p">{</span>
+        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+            <span class="nn">dbp</span><span class="p">:</span><span class="nt">name</span> <span class="nv">?name</span> <span class="p">.</span>
+    <span class="p">}</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>book</th>
+<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
+<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
+<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
+<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
+<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
+<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
+<td class=val>Servitude et grandeur militaires</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me" target="_other">http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me</a></td>
+<td class=val>Jennifer Teege , My grandfather would have shot me : a Black woman discovers her family's Nazi past</td></tr></table><div class="tinfo">Total: 7, Shown: 7</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Without-UNION">Without UNION<a class="anchor-link" href="#Without-UNION">&#182;</a></h1><p>For <code>rdfs:label</code> only 6 results</p>
+<blockquote><p>Check how many results for <code>dbp:name</code></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+        <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>book</th>
+<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
+<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
+<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
+<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
+<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
+<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
+<td class=val>Servitude et grandeur militaires</td></tr></table><div class="tinfo">Total: 6, Shown: 6</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">

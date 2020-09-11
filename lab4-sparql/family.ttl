@@ -9,7 +9,7 @@ family:Pierre a schema:Person ;
   schema:height "1.83";
   schema:weight "75";
   schema:jobTitle "Teacher" ;
-  schema:baseSalary "2142"
+  schema:baseSalary "2142" .
 family:Miranda a schema:Person;
   schema:gender schema:female;
   schema:parent family:Pierre, family:Mathilde;
