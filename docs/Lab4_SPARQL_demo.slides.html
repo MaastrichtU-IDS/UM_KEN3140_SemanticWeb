@@ -14076,7 +14076,7 @@ jupyter sparqlkernel install --user
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20(%3Fpages"><code>ORDER BY</code> the books by number of pages</a>%0ALIMIT%205&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C<em>%2F</em>%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C<em>%2F</em>%3Bq%3D0.9&amp;outputFormat=table)</strong> (in ascending order by default)</p>
+<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20(%3Fpages">ORDER BY the books by number of pages</a>%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C<em>%2F</em>%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C<em>%2F</em>%3Bq%3D0.9&amp;outputFormat=table)</strong> (in ascending order by default)</p>
 
 </div>
 </div>
@@ -14088,7 +14088,7 @@ jupyter sparqlkernel install --user
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?name</span> <span class="nv">?author</span> <span class="nv">?pages</span> <span class="nv">?book</span>
+<span class="k">SELECT</span> <span class="nv">?name</span> <span class="nv">?author</span> <span class="nv">?pages</span>
 <span class="k">WHERE</span> <span class="p">{</span>
     <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
         <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">;</span>
