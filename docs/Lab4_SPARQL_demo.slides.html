@@ -1,65 +1,13 @@
-
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta charset="utf-8" />
 
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-
-<title>Lab4_SPARQL_demo slides</title>
+<title>Lab4_SPARQL_demo</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13070,45 +13018,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
-<style type="text/css">
     /* @{KERNEL} sparqlkernel START ======================== */
 /* -*- encoding: utf-8 -*- */
 /* ------------------------------------------------------------------------- */
@@ -13184,188 +13093,137 @@ div.krn-spql div.krn-warn {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #727272;
-}
-.reveal .controls .navigate-left.enabled:hover,
-.reveal .controls .navigate-left.enabled.enabled:hover {
-  border-right-color: #dfdfdf;
-}
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #727272;
-}
-.reveal .controls .navigate-right.enabled:hover,
-.reveal .controls .navigate-right.enabled.enabled:hover {
-  border-left-color: #dfdfdf;
-}
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #727272;
-}
-.reveal .controls .navigate-up.enabled:hover,
-.reveal .controls .navigate-up.enabled.enabled:hover {
-  border-bottom-color: #dfdfdf;
-}
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #727272;
-}
-.reveal .controls .navigate-down.enabled:hover,
-.reveal .controls .navigate-down.enabled.enabled:hover {
-  border-top-color: #dfdfdf;
-}
-.reveal .progress span {
-  background: #727272;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
-}
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: #727272 !important;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-
-<div class="reveal">
-<div class="slides">
-<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Query-RDF-with-the-SPARQL-query-language">Query RDF with the SPARQL query language<a class="anchor-link" href="#Query-RDF-with-the-SPARQL-query-language">&#182;</a></h1><ul>
+<h1 id="KEN-3140:-Lab-4">KEN 3140: Lab 4<a class="anchor-link" href="#KEN-3140:-Lab-4">&#182;</a></h1><h3 id="Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">Writing and executing basic SPARQL queries on RDF graphs<a class="anchor-link" href="#Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">&#182;</a></h3><h5 id="Learning-objectives:">Learning objectives:<a class="anchor-link" href="#Learning-objectives:">&#182;</a></h5><ol>
+<li>How to compose and execute basic SPARQL SELECT queries to answer a specific question</li>
+<li>Identify and describe the function of the basic components of a SPARQL SELECT query</li>
+<li>Given a question, identify what SPARQL features would be needed in order to answer it, and how to compose these features into a syntactically valid SPARQL query</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="SPARQL-overview">SPARQL overview<a class="anchor-link" href="#SPARQL-overview">&#182;</a></h4><ul>
 <li>SPARQL (pronounced sparkle) stands for: <strong>SPARQL Protocol And RDF Query Language</strong></li>
 <li>SPARQL 1.0 W3C-Recommendation since January 15th 2008</li>
 <li>SPARQL 1.1 W3C-Recommendation since March 21st 2013 Query language to query instances in RDF documents</li>
 </ul>
-<p><strong>Reference specifications: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></strong></p>
-<blockquote><p>w3.org materials are standards and recommendations accepted by the World Wide Web Consortium (W3C, the organism defining the Internet standards)</p>
+<p><strong>Overview of all SPARQL specifications: <a href="https://www.w3.org/TR/sparql11-overview/">https://www.w3.org/TR/sparql11-overview/</a></strong></p>
+<p><strong>Specification for the SPARQL query language: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></strong></p>
+<blockquote><p>w3.org materials are standards and recommendations purveyed by the World Wide Web Consortium (W3C) - i.e., the body that defines Internet information standards</p>
 </blockquote>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="SPARQL-endpoint-&#128279;">SPARQL endpoint &#128279;<a class="anchor-link" href="#SPARQL-endpoint-&#128279;">&#182;</a></h1><ul>
-<li>Databases are not built to be publicly available, they usually live close to their applications</li>
-<li>Triplestore can be fully queried through a publicly available SPARQL endpoint URL</li>
-<li>Some solutions enable user management, but natively SPARQL endpoints are built to be open and give the same access to all their users</li>
+<li>(Relational) databases are not built to be publicly available, they usually "live close to their applications"</li>
+<li>Triplestores, on the other hand, can be queried through a publicly available SPARQL endpoint URL</li>
+<li>Some Triplestore management systems enable user management, but SPARQL endpoints are natively built to be open and give the same access to all their users</li>
 </ul>
-<p>We will use the <strong>DBpedia SPARQL endpoint</strong>:</p>
+<p>We will explore the <strong>DBpedia SPARQL endpoint</strong> available at this link:</p>
 <blockquote><p><strong><a href="https://dbpedia.org/sparql">https://dbpedia.org/sparql</a></strong></p>
 </blockquote>
-<p><a href="https://wiki.dbpedia.org/">DBpedia</a> is a project to represent (parts of) Wikipedia as RDF, it has been used has a playground for the Semantic Web for years. The data is not controlled or curated, which lead to poor data quality (don't be surprised to find weird things)</p>
-<p>You can use a nicer query editor that can query any public SPARQL endpoint:</p>
+<p><a href="https://wiki.dbpedia.org/">DBpedia</a> is a project to represent (parts of) Wikipedia as RDF, it has been used has a "playground" for the Semantic Web since 2007. The data is not centrally controlled or curated, which means you may notice that it has <strong>inconsistent quality</strong>. However, that is not of paramount importance to us - DBpedia data is still useful for demonstrating the concepts and functions behind SPARQL queries.</p>
+<p>It is possible to query DBpedia directly from their endpoint at the URL above. However, we will instead use another SPARQL query editor called <strong>YASGUI</strong> which has a few additional features which makes it easier to use. In addition, it is independent of the specific triplestore you want to query - whereas at the DBpedia SPARQL endpoint you can only query information from DBpedia itself. In contrast, you can query <strong>any</strong> SPARQL endpoint with YASGUI as long as you know its URL! The link to the YASGUI interface is located here:</p>
 <blockquote><p><strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong></p>
 </blockquote>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Install-the-SPARQL-kernel">Install the SPARQL kernel<a class="anchor-link" href="#Install-the-SPARQL-kernel">&#182;</a></h1><p>This notebook uses the SPARQL Kernel to define and <strong>execute SPARQL queries in the notebook</strong> codeblocks.
-To <strong>install the SPARQL Kernel</strong> in your JupyterLab installation:</p>
-<div class="highlight"><pre><span></span>pip install sparqlkernel --user
-jupyter sparqlkernel install --user
-</pre></div>
-<p>To start running SPARQL query in this notebook, we need to define the <strong>SPARQL kernel parameters</strong>:</p>
-<ul>
-<li>🔗 <strong>URL of the SPARQL endpoint to query</strong></li>
-<li>🌐 Language of preferred labels</li>
-<li>📜 Log level</li>
-</ul>
+<h1 id="YASGUI-interface">YASGUI interface<a class="anchor-link" href="#YASGUI-interface">&#182;</a></h1><p><img src="yasgui-interface.png"></p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<!-- # Install the SPARQL kernel
+
+This notebook uses the SPARQL Kernel to define and **execute SPARQL queries in the notebook** codeblocks.
+To **install the SPARQL Kernel** in your JupyterLab installation:
+
+```shell
+pip install sparqlkernel --user
+jupyter sparqlkernel install --user
+```
+
+To start running SPARQL query in this notebook, we need to define the **SPARQL kernel parameters**:
+* 🔗 **URL of the SPARQL endpoint to query**
+* 🌐 Language of preferred labels
+* 📜 Log level -->
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="x">%endpoint http://dbpedia.org/sparql</span>
@@ -13400,37 +13258,37 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SPARQL-query-components">SPARQL query components<a class="anchor-link" href="#SPARQL-query-components">&#182;</a></h1><p>Variables to resolve are defined using <code>?</code> (e.g. <code>?my_variable</code>)</p>
-<div class="highlight"><pre><span></span><span class="c"># prefix declarations: for abbreviating URIs</span>
+<h1 id="SPARQL-query-components">SPARQL query components<a class="anchor-link" href="#SPARQL-query-components">&#182;</a></h1><p>As we saw in Lecture 4, variables in SPARQL are defined using a <code>?</code> symbol preceding it (e.g. <code>?my_variable</code>)</p>
+<div class="highlight"><pre><span></span><span class="c"># prefix declarations: for abbreviating IRIs</span>
 <span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
-<span class="c"># dataset definition (optional): which RDF graph(s) are being queried</span>
+<span class="c"># graph IRI (optional): which RDF graph(s) are being queried</span>
 <span class="k">FROM</span>
-<span class="c"># result clause: what information to return from the query</span>
+<span class="c"># query type: select, construct, insert, ask, describe etc. and which variables to return</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="c"># query pattern: specifying what to query for in the underlying dataset</span>
 <span class="k">WHERE</span> <span class="p">{</span>
     <span class="nv">?s</span> <span class="nv">?p</span> <span class="nv">?o</span> <span class="p">.</span>
 <span class="p">}</span>
-<span class="c"># query modifiers: slicing, ordering, and rearranging query results</span>
+<span class="c"># query modifiers: features which help you configure the presentation of the query results e.g. slicing, ordering, and rearranging</span>
 <span class="k">ORDER BY</span> <span class="nv">?s</span>
 <span class="k">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Run-a-SPARQL-query">Run a SPARQL query<a class="anchor-link" href="#Run-a-SPARQL-query">&#182;</a></h1><p>Let's get <strong><a href="http://yasgui.triply.cc/#query=SELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fsubject%20%3Fpredicate%20%3Fobject%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all triples in DBpedia</a></strong>:</p>
+<h1 id="Run-your-first-SPARQL-query">Run your first SPARQL query<a class="anchor-link" href="#Run-your-first-SPARQL-query">&#182;</a></h1><p>Let's get <strong><a href="http://yasgui.triply.cc/#query=SELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fsubject%20%3Fpredicate%20%3Fobject%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all triples in DBpedia</a></strong>:</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -13507,24 +13365,25 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can see that <strong>DBpedia limit by default to 10.000 results</strong> (and the SPARQL kernel shows only 20 for readability)</p>
-<p>But the returned triples are not really interesting, we will need to filter our results</p>
+<p>Observe that <strong>DBpedia limits to 10.000 results by default</strong> (and the SPARQL kernel shows only 20 for readability reasons). <strong>Note:</strong> DBpedia contains much more than 10.000 triples.</p>
+<p>...but you may say: I don't know what these triples are about. They don't really describe anything I am interested in. You will see that many of these are triples that describe the endpoint itself and the technologies it uses. Let's filter these for more interesting information...</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Get-all-books">Get all books<a class="anchor-link" href="#Get-all-books">&#182;</a></h1><p>Get <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20dbo%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT%20*%0AWHERE%20%7B%0A%20%20%3Fbook%20rdf%3Atype%20dbo%3ABook%20.%0A%7D%0A&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all the books in DBpedia 📚</a></strong></p>
+<p>Copy and paste the query below into YASGUI (make sure the SPARQL endpoint is specified as <a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a>)</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -13552,7 +13411,7 @@ jupyter sparqlkernel install --user
 
 
 <div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>book</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Havana_Storm" target="_other">http://dbpedia.org/resource/Havana_Storm</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Awful_German_Language" target="_other">http://dbpedia.org/resource/The_Awful_German_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Urmonotheismus" target="_other">http://dbpedia.org/resource/Urmonotheismus</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Modern_C_Design" target="_other">http://dbpedia.org/resource/Modern_C_Design</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/1066_and_All_That" target="_other">http://dbpedia.org/resource/1066_and_All_That</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/2010:_Odyssey_Two" target="_other">http://dbpedia.org/resource/2010:_Odyssey_Two</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/401(k)" target="_other">http://dbpedia.org/resource/401(k)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/A_Crown_of_Swords" target="_other">http://dbpedia.org/resource/A_Crown_of_Swords</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/A_Dictionary_of_the_English_Language" target="_other">http://dbpedia.org/resource/A_Dictionary_of_the_English_Language</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Adultery" target="_other">http://dbpedia.org/resource/Adultery</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland" target="_other">http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Anne_of_Green_Gables" target="_other">http://dbpedia.org/resource/Anne_of_Green_Gables</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Ante-Nicene_Fathers" target="_other">http://dbpedia.org/resource/Ante-Nicene_Fathers</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Around_the_World_in_Eighty_Days" target="_other">http://dbpedia.org/resource/Around_the_World_in_Eighty_Days</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Astronomy" target="_other">http://dbpedia.org/resource/Astronomy</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/BBC_World_News" target="_other">http://dbpedia.org/resource/BBC_World_News</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Bacteriology" target="_other">http://dbpedia.org/resource/Bacteriology</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Balthasar_Behem_Codex" target="_other">http://dbpedia.org/resource/Balthasar_Behem_Codex</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Between_Planets" target="_other">http://dbpedia.org/resource/Between_Planets</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Beyond_This_Horizon" target="_other">http://dbpedia.org/resource/Beyond_This_Horizon</a></td></tr></table><div class="tinfo">Total: 10000, Shown: 20</div></div>
+<div class="krn-spql"><table><tr class=hdr><th>book</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Havana_Storm" target="_other">http://dbpedia.org/resource/Havana_Storm</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Awful_German_Language" target="_other">http://dbpedia.org/resource/The_Awful_German_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Urmonotheismus" target="_other">http://dbpedia.org/resource/Urmonotheismus</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/1066_and_All_That" target="_other">http://dbpedia.org/resource/1066_and_All_That</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/2010:_Odyssey_Two" target="_other">http://dbpedia.org/resource/2010:_Odyssey_Two</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/401(k)" target="_other">http://dbpedia.org/resource/401(k)</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/A_Crown_of_Swords" target="_other">http://dbpedia.org/resource/A_Crown_of_Swords</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/A_Dictionary_of_the_English_Language" target="_other">http://dbpedia.org/resource/A_Dictionary_of_the_English_Language</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Adultery" target="_other">http://dbpedia.org/resource/Adultery</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland" target="_other">http://dbpedia.org/resource/Alice's_Adventures_in_Wonderland</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Anne_of_Green_Gables" target="_other">http://dbpedia.org/resource/Anne_of_Green_Gables</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Ante-Nicene_Fathers" target="_other">http://dbpedia.org/resource/Ante-Nicene_Fathers</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Around_the_World_in_Eighty_Days" target="_other">http://dbpedia.org/resource/Around_the_World_in_Eighty_Days</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Astronomy" target="_other">http://dbpedia.org/resource/Astronomy</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/BBC_World_News" target="_other">http://dbpedia.org/resource/BBC_World_News</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Bacteriology" target="_other">http://dbpedia.org/resource/Bacteriology</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Balthasar_Behem_Codex" target="_other">http://dbpedia.org/resource/Balthasar_Behem_Codex</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Between_Planets" target="_other">http://dbpedia.org/resource/Between_Planets</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Beyond_This_Horizon" target="_other">http://dbpedia.org/resource/Beyond_This_Horizon</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Biosalinity" target="_other">http://dbpedia.org/resource/Biosalinity</a></td></tr></table><div class="tinfo">Total: 10000, Shown: 20</div></div>
 </div>
 
 </div>
@@ -13560,11 +13419,11 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here a prefix is defined for the DBpedia ontology:</p>
+<p>Here a prefix is defined for the DBpedia vocabulary / ontology:</p>
 <div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 </pre></div>
 <p>The <code>rdf:</code> prefix is defined by default, but <code>rdf:type</code> can be shortened to <code>a</code></p>
@@ -13572,14 +13431,15 @@ jupyter sparqlkernel install --user
   <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
 <span class="p">}</span>
 </pre></div>
-<p>If run on the 2 following statements it will return only the <code>&lt;http://book1&gt;</code></p>
+<p>If we execute this query on the following two triples only, the result would contain just <code>&lt;http://book1&gt;</code> (the only valid binding for <code>?book</code>)</p>
 <div class="highlight"><pre><span></span><span class="nv">&lt;http://book1&gt;</span><span class="w"> </span><span class="nn">rdf:</span><span class="nt">type</span><span class="w"> </span><span class="nv">&lt;http://dbpedia.org/ontology/Book&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 <span class="nv">&lt;http://country1&gt;</span><span class="w"> </span><span class="nn">rdf:</span><span class="nt">type</span><span class="w"> </span><span class="nv">&lt;http://dbpedia.org/ontology/Country&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 </pre></div>
+<p>Experiment with variations of this query. I.e. modify it to return specific variables rather than <code>*</code>. Do you notice a difference?</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13587,10 +13447,10 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -13645,11 +13505,12 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A turtle-like syntax can also be used to make the query more readable:</p>
+<p>How would you modify the query above to return the number of authors for the book that has the <strong>English</strong> title: "1066 and All That"?</p>
+<p>A Turtle-like syntax can also be used in SPARQL to make the query more readable:</p>
 <div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">WHERE</span> <span class="p">{</span>
@@ -13660,7 +13521,7 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13674,30 +13535,30 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Restriction-of-result-set">Restriction of result set<a class="anchor-link" href="#Restriction-of-result-set">&#182;</a></h1><ul>
-<li><code>LIMIT</code>: maximal number of results (table rows) </li>
+<h1 id="Presentation-and-processing-of-SPARQL-query-results">Presentation and processing of SPARQL query results<a class="anchor-link" href="#Presentation-and-processing-of-SPARQL-query-results">&#182;</a></h1><ul>
+<li><code>LIMIT</code>: specify the maximal number of results (table rows) </li>
 <li><code>OFFSET</code>: position of the first delivered result SELECT </li>
 <li><code>DISTINCT</code>: removal of duplicate table rows</li>
 </ul>
-<blockquote><p><code>LIMIT</code> and <code>OFFSET</code> usually make sense with <code>ORDER BY</code>!</p>
+<blockquote><p><code>LIMIT</code> and <code>OFFSET</code> are often used in conjunction with <code>ORDER BY</code></p>
 </blockquote>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Retrieve-specific-variables-and-limit">Retrieve specific variables and limit<a class="anchor-link" href="#Retrieve-specific-variables-and-limit">&#182;</a></h1><p>You can specify the variables you want to be returned. And <code>LIMIT</code> the number of results returned.</p>
-<p>This query will return 10 authors of book, with duplicates if the author wrote multiple books 👥</p>
+<p>This query will return 10 authors of books in DBpedia, with duplicates if the author wrote multiple books 👥</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -13735,18 +13596,18 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Retrieve-distinct-results">Retrieve distinct results<a class="anchor-link" href="#Retrieve-distinct-results">&#182;</a></h1><p>You can also require to only return <code>DISTINCT</code> results (will not return duplicate rows)</p>
+<h1 id="Retrieve-distinct-results">Retrieve distinct results<a class="anchor-link" href="#Retrieve-distinct-results">&#182;</a></h1><p>You can also enforce that only unique <code>DISTINCT</code> results are returned</p>
 <blockquote><p>Use the <code>*</code> if you want all variables</p>
 </blockquote>
-<p>This query will return all authors of book <strong>without duplicates</strong>, even if they wrote multiple books 👤</p>
+<p>This query will return all authors of books in DBpedia <strong>without duplicates</strong>, even if they wrote multiple books 👤</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -13783,7 +13644,7 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13801,7 +13662,7 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13809,10 +13670,10 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -13848,205 +13709,82 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Perform-an-arithmetic-operation">Perform an arithmetic operation<a class="anchor-link" href="#Perform-an-arithmetic-operation">&#182;</a></h1><p>Calculate the GDP per capita of countries from <code>dbp:gdpNominal</code> and <code>dbo:populationTotal</code> <strong>impossible due to different datatypes</strong> 🚫</p>
+<!-- # Perform an arithmetic operation
 
+Calculate the GDP per capita of countries from `dbp:gdpNominal` and `dbo:populationTotal` **impossible due to different datatypes** 🚫 -->
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?country</span> <span class="nv">?gdpValue</span> <span class="nf">datatype</span><span class="p">(</span><span class="nv">?gdpValue</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?gdpType</span> <span class="nv">?population</span> <span class="nf">datatype</span><span class="p">(</span><span class="nv">?population</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?populationType</span> <span class="p">(</span><span class="nv">?gdpValue</span> <span class="o">/</span> <span class="nv">?population</span> <span class="k">AS</span> <span class="nv">?gdpPerCapita</span><span class="p">)</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="nv">?country</span> <span class="nn">dbp</span><span class="p">:</span><span class="nt">gdpNominal</span> <span class="nv">?gdpValue</span> <span class="p">;</span>
-             <span class="nn">dbo</span><span class="p">:</span><span class="nt">populationTotal</span> <span class="nv">?population</span> <span class="p">.</span>
-<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+<span class="c"># PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="c"># PREFIX dbp: &lt;http://dbpedia.org/property/&gt;</span>
+<span class="c"># PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<span class="c"># SELECT ?country ?gdpValue datatype(?gdpValue) AS ?gdpType ?population datatype(?population) AS ?populationType (?gdpValue / ?population AS ?gdpPerCapita)</span>
+<span class="c"># WHERE {</span>
+<span class="c">#     ?country dbp:gdpNominal ?gdpValue ;</span>
+<span class="c">#              dbo:populationTotal ?population .</span>
+<span class="c"># } LIMIT 10</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>country</th>
-<th>gdpValue</th>
-<th>gdpType</th>
-<th>population</th>
-<th>populationType</th>
-<th>gdpPerCapita</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Arab_League" target="_other">http://dbpedia.org/resource/Arab_League</a></td>
-<td class=val>3.526E12</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>423000000</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Syria" target="_other">http://dbpedia.org/resource/Syria</a></td>
-<td class=val>5.9957E10</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>17064854</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Economic_Cooperation_Organization" target="_other">http://dbpedia.org/resource/Economic_Cooperation_Organization</a></td>
-<td class=val>US $1.9 trillion</td>
-<td class=val><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" target="_other">http://www.w3.org/1999/02/22-rdf-syntax-ns#langString</a></td>
-<td class=val>416046863</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Egypt" target="_other">http://dbpedia.org/resource/Egypt</a></td>
-<td class=val>3.30765E11</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>85783</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/United_States" target="_other">http://dbpedia.org/resource/United_States</a></td>
-<td class=val>1.8558E13</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>324720797</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Afghanistan" target="_other">http://dbpedia.org/resource/Afghanistan</a></td>
-<td class=val>1.9654E10</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>32564342</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Albania" target="_other">http://dbpedia.org/resource/Albania</a></td>
-<td class=val>1.2204E10</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>2886026</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Algeria" target="_other">http://dbpedia.org/resource/Algeria</a></td>
-<td class=val>1.8171E11</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>40400000</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Andorra" target="_other">http://dbpedia.org/resource/Andorra</a></td>
-<td class=val>4.51E9</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>85470</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Antigua_and_Barbuda" target="_other">http://dbpedia.org/resource/Antigua_and_Barbuda</a></td>
-<td class=val>1.332E9</td>
-<td class=val><a href="http://dbpedia.org/datatype/usDollar" target="_other">http://dbpedia.org/datatype/usDollar</a></td>
-<td class=val>91295</td>
-<td class=val><a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" target="_other">http://www.w3.org/2001/XMLSchema#nonNegativeInteger</a></td>
-<td class=val>0</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Cast-a-variable-to-a-specific-datatype">Cast a variable to a specific datatype<a class="anchor-link" href="#Cast-a-variable-to-a-specific-datatype">&#182;</a></h1><p>Especially useful when <strong>comparing or performing an arithmetical operations on 2 variables</strong>.</p>
-<p>Here we divide a value in <code>usDollar</code> by a <code>nonNegativeInteger</code> casting the 2 to <code>xsd:integer</code> to calculate the GDP per capita of each country 💶</p>
+<!-- # Cast a variable to a specific datatype
 
+Especially useful when **comparing or performing an arithmetical operations on 2 variables**.
+
+Here we divide a value in `usDollar` by a `nonNegativeInteger` casting the 2 to `xsd:integer` to calculate the GDP per capita of each country 💶 -->
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?country</span> <span class="nv">?gdpValue</span> <span class="nv">?population</span> <span class="p">(</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">integer</span><span class="p">(</span><span class="nv">?gdpValue</span><span class="p">)</span> <span class="o">/</span> <span class="nn">xsd</span><span class="p">:</span><span class="nt">integer</span><span class="p">(</span><span class="nv">?population</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?gdpPerCapita</span><span class="p">)</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="nv">?country</span> <span class="nn">dbp</span><span class="p">:</span><span class="nt">gdpNominal</span> <span class="nv">?gdpValue</span> <span class="p">;</span>
-             <span class="nn">dbo</span><span class="p">:</span><span class="nt">populationTotal</span> <span class="nv">?population</span> <span class="p">.</span>
-<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+<span class="c"># PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="c"># PREFIX dbp: &lt;http://dbpedia.org/property/&gt;</span>
+<span class="c"># SELECT ?country ?gdpValue ?population (xsd:integer(?gdpValue) / xsd:integer(?population) AS ?gdpPerCapita)</span>
+<span class="c"># WHERE {</span>
+<span class="c">#     ?country dbp:gdpNominal ?gdpValue ;</span>
+<span class="c">#              dbo:populationTotal ?population .</span>
+<span class="c"># } LIMIT 10</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>country</th>
-<th>gdpValue</th>
-<th>population</th>
-<th>gdpPerCapita</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Arab_League" target="_other">http://dbpedia.org/resource/Arab_League</a></td>
-<td class=val>3.526E12</td>
-<td class=val>423000000</td>
-<td class=val>8335</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Syria" target="_other">http://dbpedia.org/resource/Syria</a></td>
-<td class=val>5.9957E10</td>
-<td class=val>17064854</td>
-<td class=val>3513</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Economic_Cooperation_Organization" target="_other">http://dbpedia.org/resource/Economic_Cooperation_Organization</a></td>
-<td class=val>US $1.9 trillion</td>
-<td class=val>416046863</td>
-<td class=val></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Egypt" target="_other">http://dbpedia.org/resource/Egypt</a></td>
-<td class=val>3.30765E11</td>
-<td class=val>85783</td>
-<td class=val>3855833</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/United_States" target="_other">http://dbpedia.org/resource/United_States</a></td>
-<td class=val>1.8558E13</td>
-<td class=val>324720797</td>
-<td class=val>57150</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Afghanistan" target="_other">http://dbpedia.org/resource/Afghanistan</a></td>
-<td class=val>1.9654E10</td>
-<td class=val>32564342</td>
-<td class=val>603</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Albania" target="_other">http://dbpedia.org/resource/Albania</a></td>
-<td class=val>1.2204E10</td>
-<td class=val>2886026</td>
-<td class=val>4228</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Algeria" target="_other">http://dbpedia.org/resource/Algeria</a></td>
-<td class=val>1.8171E11</td>
-<td class=val>40400000</td>
-<td class=val>4497</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Andorra" target="_other">http://dbpedia.org/resource/Andorra</a></td>
-<td class=val>4.51E9</td>
-<td class=val>85470</td>
-<td class=val>52767</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Antigua_and_Barbuda" target="_other">http://dbpedia.org/resource/Antigua_and_Barbuda</a></td>
-<td class=val>1.332E9</td>
-<td class=val>91295</td>
-<td class=val>14590</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Filter-books-on-name-content">Filter books on name content<a class="anchor-link" href="#Filter-books-on-name-content">&#182;</a></h1><ul>
 <li>Cast the variable <code>?name</code> using the <code>str()</code> function, to avoid datatypes incompatibility</li>
-<li>Use the <strong>function</strong> <code>contains(bigger_string,smaller_string)</code> to only keep books with the string "grand" in their label 🏷️</li>
+<li>Use the <strong>function</strong> <code>contains(string_to_look_in,string_to_look_for)</code> to only keep books with the string "grand" in their label 🏷️</li>
 </ul>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14094,7 +13832,7 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14115,7 +13853,7 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14123,10 +13861,10 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
@@ -14177,7 +13915,7 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14187,10 +13925,10 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
@@ -14235,20 +13973,20 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Get-the-language-of-a-literal">Get the language of a literal<a class="anchor-link" href="#Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the lang of the book label 💬</p>
+<h1 id="Get-the-language-of-a-literal">Get the language of a literal<a class="anchor-link" href="#Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the language of the book label 💬</p>
 <blockquote><p>Give it a name using the keyword <code>as</code></p>
 </blockquote>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
@@ -14306,18 +14044,18 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Return-only-books-with-title-in-Dutch">Return only books with title in Dutch<a class="anchor-link" href="#Return-only-books-with-title-in-Dutch">&#182;</a></h1><p>Use the <code>langMatches()</code> function to filter books with a label in Dutch 🇳🇱</p>
+<h1 id="Return-only-Dutch-book-titles">Return only Dutch book titles<a class="anchor-link" href="#Return-only-Dutch-book-titles">&#182;</a></h1><p>Use the <code>langMatches()</code> function to filter books with a label value Dutch 🇳🇱</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
@@ -14365,18 +14103,18 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code> the books by number of pages</a></strong>, in ascending order by default 📤</p>
+<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can use <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code></a></strong>, to order the books by the number of pages it contains in ascending order by default 📤</p>
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14437,7 +14175,7 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14445,10 +14183,10 @@ jupyter sparqlkernel install --user
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14511,242 +14249,114 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Count-aggregated-results">Count aggregated results<a class="anchor-link" href="#Count-aggregated-results">&#182;</a></h1><p>Count the number of books for each author 📚</p>
+<!-- # Count aggregated results
 
+Count the number of books for each author 📚 -->
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?author</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?book</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?book_count</span><span class="p">)</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
-<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX dbo:&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="c"># SELECT ?author (count(?book) as ?book_count)</span>
+<span class="c"># WHERE {</span>
+<span class="c">#     ?book a dbo:Book ;</span>
+<span class="c">#         dbo:author ?author .</span>
+<span class="c"># } LIMIT 10</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>author</th>
-<th>book_count</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Daniel_Carter_Beard" target="_other">http://dbpedia.org/resource/Daniel_Carter_Beard</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Raymond_Smullyan" target="_other">http://dbpedia.org/resource/Raymond_Smullyan</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/William_Donaldson" target="_other">http://dbpedia.org/resource/William_Donaldson</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Joe_Conason" target="_other">http://dbpedia.org/resource/Joe_Conason</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/John_Lennon" target="_other">http://dbpedia.org/resource/John_Lennon</a></td>
-<td class=val>3</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Jürgen_Habermas" target="_other">http://dbpedia.org/resource/Jürgen_Habermas</a></td>
-<td class=val>8</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Robert_Nathan" target="_other">http://dbpedia.org/resource/Robert_Nathan</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/J._P._Martin" target="_other">http://dbpedia.org/resource/J._P._Martin</a></td>
-<td class=val>6</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Anthony_Everitt" target="_other">http://dbpedia.org/resource/Anthony_Everitt</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Arthur_R.G._Solmssen" target="_other">http://dbpedia.org/resource/Arthur_R.G._Solmssen</a></td>
-<td class=val>1</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Count-depend-on-the-aggregated-results-of-a-row">Count depend on the aggregated results of a row<a class="anchor-link" href="#Count-depend-on-the-aggregated-results-of-a-row">&#182;</a></h1><p>Here we select also the book, hence getting a count of 1 book for each row 📘</p>
+<!-- # Count depend on the aggregated results of a row
 
+Here we select also the book, hence getting a count of 1 book for each row 📘 -->
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?author</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?book</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?book_count</span><span class="p">)</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
-<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX dbo:&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="c"># SELECT ?book ?author (count(?book) as ?book_count)</span>
+<span class="c"># WHERE {</span>
+<span class="c">#     ?book a dbo:Book ;</span>
+<span class="c">#         dbo:author ?author .</span>
+<span class="c"># } LIMIT 10</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>book</th>
-<th>author</th>
-<th>book_count</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/The_Aunt's_Story" target="_other">http://dbpedia.org/resource/The_Aunt's_Story</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Patrick_White" target="_other">http://dbpedia.org/resource/Patrick_White</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Circus_of_Dr._Lao_and_Other_Improbable_Stories" target="_other">http://dbpedia.org/resource/The_Circus_of_Dr._Lao_and_Other_Improbable_Stories</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Ray_Bradbury" target="_other">http://dbpedia.org/resource/Ray_Bradbury</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/The_Four_False_Weapons" target="_other">http://dbpedia.org/resource/The_Four_False_Weapons</a></td>
-<td class=val><a href="http://dbpedia.org/resource/John_Dickson_Carr" target="_other">http://dbpedia.org/resource/John_Dickson_Carr</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Smack_Man" target="_other">http://dbpedia.org/resource/The_Smack_Man</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Nelson_DeMille" target="_other">http://dbpedia.org/resource/Nelson_DeMille</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/The_Surprising_Archaea" target="_other">http://dbpedia.org/resource/The_Surprising_Archaea</a></td>
-<td class=val><a href="http://dbpedia.org/resource/John_L._Howland" target="_other">http://dbpedia.org/resource/John_L._Howland</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Trapped_in_the_USSR" target="_other">http://dbpedia.org/resource/Trapped_in_the_USSR</a></td>
-<td class=val><a href="http://dbpedia.org/resource/J._J._Fortune" target="_other">http://dbpedia.org/resource/J._J._Fortune</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/A_Gent_from_Bear_Creek" target="_other">http://dbpedia.org/resource/A_Gent_from_Bear_Creek</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Robert_E._Howard" target="_other">http://dbpedia.org/resource/Robert_E._Howard</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/A_Golden_Anniversary_Bibliography_of_Edgar_Rice_Burroughs" target="_other">http://dbpedia.org/resource/A_Golden_Anniversary_Bibliography_of_Edgar_Rice_Burroughs</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Henry_Hardy_Heins" target="_other">http://dbpedia.org/resource/Henry_Hardy_Heins</a></td>
-<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Act_of_Providence" target="_other">http://dbpedia.org/resource/Act_of_Providence</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Joseph_Payne_Brennan" target="_other">http://dbpedia.org/resource/Joseph_Payne_Brennan</a></td>
-<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Atlas_of_the_British_Flora" target="_other">http://dbpedia.org/resource/Atlas_of_the_British_Flora</a></td>
-<td class=val><a href="http://dbpedia.org/resource/Franklyn_Perring" target="_other">http://dbpedia.org/resource/Franklyn_Perring</a></td>
-<td class=val>1</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SPARQL-query-breakdown-&#129516;">SPARQL query breakdown &#129516;<a class="anchor-link" href="#SPARQL-query-breakdown-&#129516;">&#182;</a></h1><p><img src="sparql_query_breakdown.png"></p>
+<!-- # SPARQL query breakdown 🧬
 
+<img src="sparql_query_breakdown.png"> -->
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Search-on-DBpedia-&#128270;">Search on DBpedia &#128270;<a class="anchor-link" href="#Search-on-DBpedia-&#128270;">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL query on DBpedia</p>
-<blockquote><p>Find DBpedia classes and relations: search on google, e.g.: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</p>
+<h1 id="Search-on-DBpedia-&#128270;">Search on DBpedia &#128270;<a class="anchor-link" href="#Search-on-DBpedia-&#128270;">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL queries on the DBpedia RDF graph to retrieve the following answers below:</p>
+<blockquote><p>How do I find vocabulary to use in my SPARQL query from DBpedia? Search on google, e.g., if you want to know the term for "capital city" in DBpedia, search for: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</p>
 </blockquote>
-<ul>
+<ol>
 <li><p>The capital (<a href="http://dbpedia.org/ontology/capital">dbo:capital</a>) of the country in which authors of books are born (<a href="http://dbpedia.org/ontology/birthPlace">dbo:birthPlace</a>), limit to 10</p>
 </li>
 <li><p>All books with a name in english starting with "http" ignoring case</p>
 </li>
-<li><p>Calculate the GDP per capita using countries <code>dbp:gdpNominal</code>, <code>dbo:populationTotal</code> (GDP/population) and compare it to the existing property in DBpedia <code>dbp:gdpNominalPerCapita</code></p>
+<li><p>A list of all the unique book categories (dct:subject) for all short books (less than 300 pages) written by authors who were born in Amsterdam</p>
 </li>
-</ul>
+</ol>
 <blockquote><p><strong>Search for functions in the specifications: <a href="https://www.w3.org/TR/sparql11-query">https://www.w3.org/TR/sparql11-query</a></strong></p>
 </blockquote>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Public-SPARQL-endpoints-&#128279;">Public SPARQL endpoints &#128279;<a class="anchor-link" href="#Public-SPARQL-endpoints-&#128279;">&#182;</a></h1><ul>
+<h1 id="Examples-of-other-public-SPARQL-endpoints-&#128279;">Examples of other public SPARQL endpoints &#128279;<a class="anchor-link" href="#Examples-of-other-public-SPARQL-endpoints-&#128279;">&#182;</a></h1><ul>
 <li>Wikidata, facts powering Wikipedia infobox: <a href="https://query.wikidata.org/sparql">https://query.wikidata.org/sparql</a></li>
 <li>Bio2RDF, linked data for the life sciences: <a href="https://bio2rdf.org/sparql">https://bio2rdf.org/sparql</a></li>
 <li>Disgenet, gene-disease association: <a href="http://rdf.disgenet.org/sparql">http://rdf.disgenet.org/sparql</a></li>
 <li>PathwayCommons, resource for biological pathways analysis: <a href="http://rdf.pathwaycommons.org/sparql">http://rdf.pathwaycommons.org/sparql</a></li>
+<li>EU publications office, court decisions and legislative documents from the EU: <a href="http://publications.europa.eu/webapi/rdf/sparql">http://publications.europa.eu/webapi/rdf/sparql</a></li>
+<li>Finland legal open data, cases and legislation: <a href="https://data.finlex.fi/en/sparql">https://data.finlex.fi/en/sparql</a> </li>
 </ul>
-<h1 id="Going-further">Going further<a class="anchor-link" href="#Going-further">&#182;</a></h1><ul>
+<h1 id="Other-interesting-links">Other interesting links<a class="anchor-link" href="#Other-interesting-links">&#182;</a></h1><ul>
 <li>Wikidata SPARQL queries around the SARS-CoV-2 virus and pandemic: <a href="https://egonw.github.io/SARS-CoV-2-Queries">https://egonw.github.io/SARS-CoV-2-Queries</a></li>
-<li>Use <a href="http://prefix.cc/">prefix.cc</a> to resolve mysterious prefixes.</li>
+<li>Use <a href="http://prefix.cc/">prefix.cc</a> to discover the full IRIs for unknown prefixes you may encounter</li>
 </ul>
 
 </div>
 </div>
-</div></section></section>
 </div>
-</div>
-
-<script>
-
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-
-            transition: "slide",
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
-
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-
-        Reveal.addEventListener('slidechanged', update);
-
-        function setScrollingSlide() {
-            var scroll = false
-            if (scroll === true) {
-              var h = $('.reveal').height() * 0.95;
-              $('section.present').find('section')
-                .filter(function() {
-                  return $(this).height() > h;
-                })
-                .css('height', 'calc(95vh)')
-                .css('overflow-y', 'scroll')
-                .css('margin-top', '20px');
-            }
-        }
-
-        // check and set the scrolling slide every time the slide change
-        Reveal.addEventListener('slidechanged', setScrollingSlide);
-
-    }
-
-);
-</script>
-
+    </div>
+  </div>
 </body>
+
+ 
 
 
 </html>
