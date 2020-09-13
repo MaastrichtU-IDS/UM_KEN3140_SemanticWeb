@@ -13314,7 +13314,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="KEN-3140:-Lab-4">KEN 3140: Lab 4<a class="anchor-link" href="#KEN-3140:-Lab-4">&#182;</a></h1><h3 id="Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">Writing and executing basic SPARQL queries on RDF graphs<a class="anchor-link" href="#Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">&#182;</a></h3><h5 id="Learning-objectives:">Learning objectives:<a class="anchor-link" href="#Learning-objectives:">&#182;</a></h5><ol>
+<h1 id="KEN-3140-Semantic-Web:-Lab-4">KEN 3140 Semantic Web: Lab 4<a class="anchor-link" href="#KEN-3140-Semantic-Web:-Lab-4">&#182;</a></h1><h3 id="Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">Writing and executing basic SPARQL queries on RDF graphs<a class="anchor-link" href="#Writing-and-executing-basic-SPARQL-queries-on-RDF-graphs">&#182;</a></h3><h5 id="Learning-objectives:">Learning objectives:<a class="anchor-link" href="#Learning-objectives:">&#182;</a></h5><ol>
 <li>How to compose and execute basic SPARQL SELECT queries to answer a specific question</li>
 <li>Identify and describe the function of the basic components of a SPARQL SELECT query</li>
 <li>Given a question, identify what SPARQL features would be needed in order to answer it, and how to compose these features into a syntactically valid SPARQL query</li>
@@ -13322,7 +13322,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13357,7 +13357,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13366,32 +13366,13 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # Install the SPARQL kernel
-
-This notebook uses the SPARQL Kernel to define and **execute SPARQL queries in the notebook** codeblocks.
-To **install the SPARQL Kernel** in your JupyterLab installation:
-
-```shell
-pip install sparqlkernel --user
-jupyter sparqlkernel install --user
-```
-
-To start running SPARQL query in this notebook, we need to define the **SPARQL kernel parameters**:
-* 🔗 **URL of the SPARQL endpoint to query**
-* 🌐 Language of preferred labels
-* 📜 Log level -->
-</div>
-</div>
-</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="x">%endpoint http://dbpedia.org/sparql</span>
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># Set the SPARQL Kernel parameters</span>
+<span class="x">%endpoint http://dbpedia.org/sparql</span>
 
 <span class="c"># This is optional, it would increase the log level</span>
 <span class="x">%log debug</span>
@@ -13423,7 +13404,7 @@ To start running SPARQL query in this notebook, we need to define the **SPARQL k
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13871,67 +13852,6 @@ To start running SPARQL query in this notebook, we need to define the **SPARQL k
 
 </div>
 
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # Perform an arithmetic operation
-
-Calculate the GDP per capita of countries from `dbp:gdpNominal` and `dbo:populationTotal` **impossible due to different datatypes** 🚫 -->
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-<span class="c"># PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="c"># PREFIX dbp: &lt;http://dbpedia.org/property/&gt;</span>
-<span class="c"># PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
-<span class="c"># SELECT ?country ?gdpValue datatype(?gdpValue) AS ?gdpType ?population datatype(?population) AS ?populationType (?gdpValue / ?population AS ?gdpPerCapita)</span>
-<span class="c"># WHERE {</span>
-<span class="c">#     ?country dbp:gdpNominal ?gdpValue ;</span>
-<span class="c">#              dbo:populationTotal ?population .</span>
-<span class="c"># } LIMIT 10</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # Cast a variable to a specific datatype
-
-Especially useful when **comparing or performing an arithmetical operations on 2 variables**.
-
-Here we divide a value in `usDollar` by a `nonNegativeInteger` casting the 2 to `xsd:integer` to calculate the GDP per capita of each country 💶 -->
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-<span class="c"># PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="c"># PREFIX dbp: &lt;http://dbpedia.org/property/&gt;</span>
-<span class="c"># SELECT ?country ?gdpValue ?population (xsd:integer(?gdpValue) / xsd:integer(?population) AS ?gdpPerCapita)</span>
-<span class="c"># WHERE {</span>
-<span class="c">#     ?country dbp:gdpNominal ?gdpValue ;</span>
-<span class="c">#              dbo:populationTotal ?population .</span>
-<span class="c"># } LIMIT 10</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -14415,69 +14335,6 @@ Here we divide a value in `usDollar` by a `nonNegativeInteger` casting the 2 to 
 </div>
 
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # Count aggregated results
-
-Count the number of books for each author 📚 -->
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX dbo:&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="c"># SELECT ?author (count(?book) as ?book_count)</span>
-<span class="c"># WHERE {</span>
-<span class="c">#     ?book a dbo:Book ;</span>
-<span class="c">#         dbo:author ?author .</span>
-<span class="c"># } LIMIT 10</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # Count depend on the aggregated results of a row
-
-Here we select also the book, hence getting a count of 1 book for each row 📘 -->
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># PREFIX dbo:&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="c"># SELECT ?book ?author (count(?book) as ?book_count)</span>
-<span class="c"># WHERE {</span>
-<span class="c">#     ?book a dbo:Book ;</span>
-<span class="c">#         dbo:author ?author .</span>
-<span class="c"># } LIMIT 10</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- # SPARQL query breakdown 🧬
-
-<img src="sparql_query_breakdown.png"> -->
-</div>
-</div>
-</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
