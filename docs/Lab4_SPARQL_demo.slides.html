@@ -14131,131 +14131,11 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="8.-Return-results-from-different-patterns">8. Return results from different patterns<a class="anchor-link" href="#8.-Return-results-from-different-patterns">&#182;</a></h1><p>Use <code>UNION</code> to return the books name wherever it is defined with <code>rdfs:label</code> or <code>dbp:name</code>:</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="p">{</span>
-        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-            <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
-        <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
-    <span class="p">}</span> <span class="k">UNION</span> <span class="p">{</span>
-        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-            <span class="nn">dbp</span><span class="p">:</span><span class="nt">name</span> <span class="nv">?name</span> <span class="p">.</span>
-    <span class="p">}</span>
-    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>book</th>
-<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
-<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
-<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
-<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
-<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
-<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
-<td class=val>Servitude et grandeur militaires</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me" target="_other">http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me</a></td>
-<td class=val>Jennifer Teege , My grandfather would have shot me : a Black woman discovers her family's Nazi past</td></tr></table><div class="tinfo">Total: 7, Shown: 7</div></div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Without-UNION">Without UNION<a class="anchor-link" href="#Without-UNION">&#182;</a></h1><p>For <code>rdfs:label</code> only 6 results</p>
-<blockquote><p>Check how many results for <code>dbp:name</code></p>
-</blockquote>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
-<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
-<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
-<span class="k">WHERE</span> <span class="p">{</span>
-    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
-        <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
-    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
-    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div class="krn-spql"><table><tr class=hdr><th>book</th>
-<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
-<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
-<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
-<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
-<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
-<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
-<td class=val>Servitude et grandeur militaires</td></tr></table><div class="tinfo">Total: 6, Shown: 6</div></div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="9.-Get-the-language-of-a-literal">9. Get the language of a literal<a class="anchor-link" href="#9.-Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the language of the book label 💬</p>
+<h1 id="8.-Get-the-language-of-a-literal">8. Get the language of a literal<a class="anchor-link" href="#8.-Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the language of the book label 💬</p>
 <blockquote><p>Give it a name using the keyword <code>as</code></p>
 </blockquote>
 
@@ -14270,7 +14150,7 @@ a.anchor-link {
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
 <span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="nv">?name</span> <span class="nv">?author</span> <span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?lang</span>
-<span class="k">WHERE</span> <span class="p">{</span>
+<span class="k">WHERE</span>  
     <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
         <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">;</span>
         <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span> 
@@ -14385,7 +14265,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="10.-Sorting-results">10. Sorting results<a class="anchor-link" href="#10.-Sorting-results">&#182;</a></h1><p>We can use <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code></a></strong>, to order the books by the number of pages it contains in ascending order by default 📤</p>
+<h1 id="9.-Sorting-results">9. Sorting results<a class="anchor-link" href="#9.-Sorting-results">&#182;</a></h1><p>We can use <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code></a></strong>, to order the books by the number of pages it contains in ascending order by default 📤</p>
 
 </div>
 </div>
@@ -14531,14 +14411,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="11.-Count-results">11. Count results<a class="anchor-link" href="#11.-Count-results">&#182;</a></h1><p>Count the number of books</p>
+<h1 id="10.-Count-results">10. Count results<a class="anchor-link" href="#10.-Count-results">&#182;</a></h1><p>Count the number of books</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14549,6 +14429,25 @@ a.anchor-link {
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>book_count</th></tr><tr class=odd><td class=val>64239</td></tr></table><div class="tinfo">Total: 1, Shown: 1</div></div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -14564,7 +14463,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -14576,6 +14475,156 @@ a.anchor-link {
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>author</th>
+<th>book_count</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Daniel_Carter_Beard" target="_other">http://dbpedia.org/resource/Daniel_Carter_Beard</a></td>
+<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Raymond_Smullyan" target="_other">http://dbpedia.org/resource/Raymond_Smullyan</a></td>
+<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/William_Donaldson" target="_other">http://dbpedia.org/resource/William_Donaldson</a></td>
+<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Joe_Conason" target="_other">http://dbpedia.org/resource/Joe_Conason</a></td>
+<td class=val>1</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/John_Lennon" target="_other">http://dbpedia.org/resource/John_Lennon</a></td>
+<td class=val>3</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Jürgen_Habermas" target="_other">http://dbpedia.org/resource/Jürgen_Habermas</a></td>
+<td class=val>8</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Robert_Nathan" target="_other">http://dbpedia.org/resource/Robert_Nathan</a></td>
+<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/J._P._Martin" target="_other">http://dbpedia.org/resource/J._P._Martin</a></td>
+<td class=val>6</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Anthony_Everitt" target="_other">http://dbpedia.org/resource/Anthony_Everitt</a></td>
+<td class=val>1</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Arthur_R.G._Solmssen" target="_other">http://dbpedia.org/resource/Arthur_R.G._Solmssen</a></td>
+<td class=val>1</td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="11.-Return-results-from-different-patterns">11. Return results from different patterns<a class="anchor-link" href="#11.-Return-results-from-different-patterns">&#182;</a></h1><p>Use <code>UNION</code> to return the books name wherever it is defined with <code>rdfs:label</code> or <code>dbp:name</code>:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="p">{</span>
+        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+            <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
+        <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">UNION</span> <span class="p">{</span>
+        <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+            <span class="nn">dbp</span><span class="p">:</span><span class="nt">name</span> <span class="nv">?name</span> <span class="p">.</span>
+    <span class="p">}</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>book</th>
+<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
+<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
+<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
+<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
+<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
+<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
+<td class=val>Servitude et grandeur militaires</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me" target="_other">http://dbpedia.org/resource/My_Grandfather_Would_Have_Shot_Me</a></td>
+<td class=val>Jennifer Teege , My grandfather would have shot me : a Black woman discovers her family's Nazi past</td></tr></table><div class="tinfo">Total: 7, Shown: 7</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Without-UNION">Without UNION<a class="anchor-link" href="#Without-UNION">&#182;</a></h1><p>For <code>rdfs:label</code> only 6 results</p>
+<blockquote><p>Check how many results for <code>dbp:name</code></p>
+</blockquote>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="nv">?book</span> <span class="nv">?name</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+        <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span> <span class="p">.</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">langMatches</span><span class="p">(</span><span class="nf">lang</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span><span class="s">&quot;en&quot;</span><span class="p">))</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="nv">?name</span><span class="p">),</span> <span class="s">&quot;grand&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>book</th>
+<th>name</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum" target="_other">http://dbpedia.org/resource/Alphabetum_grandonico-malabaricum_sive_samscrudonicum</a></td>
+<td class=val>Alphabetum grandonico-malabaricum sive samscrudonicum</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune" target="_other">http://dbpedia.org/resource/Les_grands_cimetières_sous_la_lune</a></td>
+<td class=val>Les grands cimetières sous la lune</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/L'Art_d'être_grand-père" target="_other">http://dbpedia.org/resource/L'Art_d'être_grand-père</a></td>
+<td class=val>L'Art d'être grand-père</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/La_Cour_des_grands" target="_other">http://dbpedia.org/resource/La_Cour_des_grands</a></td>
+<td class=val>La Cour des grands</td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Plame_affair_grand_jury_investigation" target="_other">http://dbpedia.org/resource/Plame_affair_grand_jury_investigation</a></td>
+<td class=val>Plame affair grand jury investigation</td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Servitude_et_grandeur_militaires" target="_other">http://dbpedia.org/resource/Servitude_et_grandeur_militaires</a></td>
+<td class=val>Servitude et grandeur militaires</td></tr></table><div class="tinfo">Total: 6, Shown: 6</div></div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -14591,13 +14640,53 @@ a.anchor-link {
 </li>
 <li><p>The number of authors for the book that has the <strong>English</strong> title: "1066 and All That"</p>
 </li>
-<li><p>All books with a name in <strong>English</strong> starting with "http." ignoring case</p>
+<li><p>All books with a name in <strong>English</strong> starting with "http" (ignore the case)</p>
 </li>
 <li><p>A list of all the unique book categories (dct:subject) for all short books (less than 300 pages) written by authors who were born in Amsterdam</p>
 </li>
 </ol>
 <blockquote><p><strong>Search for functions in the specifications: <a href="https://www.w3.org/TR/sparql11-query">https://www.w3.org/TR/sparql11-query</a></strong></p>
 </blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>List 10 authors and the capital cities (<a href="http://dbpedia.org/ontology/capital">dbo:capital</a>) of the countries in which they were born (<a href="http://dbpedia.org/ontology/birthPlace">dbo:birthPlace</a>)</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>The number of authors for the book that has the <strong>English</strong> title: "1066 and All That"</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>All books with a name in <strong>English</strong> starting with "http." ignoring case</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>A list of all the unique book categories (dct:subject) for all short books (less than 300 pages) written by authors who were born in Amsterdam</li>
+</ol>
 
 </div>
 </div>
