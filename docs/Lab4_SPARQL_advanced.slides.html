@@ -13314,30 +13314,11 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="KEN-3140-Semantic-Web:-Lab-5-&#129514;">KEN 3140 Semantic Web: Lab 5 &#129514;<a class="anchor-link" href="#KEN-3140-Semantic-Web:-Lab-5-&#129514;">&#182;</a></h1><h3 id="Writing-and-executing-complex-SPARQL-queries-on-RDF-graphs">Writing and executing complex SPARQL queries on RDF graphs<a class="anchor-link" href="#Writing-and-executing-complex-SPARQL-queries-on-RDF-graphs">&#182;</a></h3><p><strong>Reference specifications: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></strong></p>
+<h1 id="KEN-3140-Semantic-Web:-Lab-5-&#129514;">KEN 3140 Semantic Web: Lab 5 &#129514;<a class="anchor-link" href="#KEN-3140-Semantic-Web:-Lab-5-&#129514;">&#182;</a></h1><h3 id="Writing-and-executing-&quot;complex&quot;-SPARQL-queries-on-RDF-graphs">Writing and executing "complex" SPARQL queries on RDF graphs<a class="anchor-link" href="#Writing-and-executing-&quot;complex&quot;-SPARQL-queries-on-RDF-graphs">&#182;</a></h3><p><strong>Reference specifications: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></strong></p>
 <p>We will use the <strong>DBpedia SPARQL endpoint</strong>:</p>
 <blockquote><p><strong><a href="https://dbpedia.org/sparql">https://dbpedia.org/sparql</a></strong></p>
 </blockquote>
 <p>And <strong>SPARQL query editor YASGUI</strong>:</p>
-<blockquote><p><strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong></p>
-</blockquote>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SPARQL-endpoint-&#128279;">SPARQL endpoint &#128279;<a class="anchor-link" href="#SPARQL-endpoint-&#128279;">&#182;</a></h1><ul>
-<li>Databases are not built to be publicly available, they usually live close to their applications</li>
-<li>Triplestore can be fully queried through a publicly available SPARQL endpoint URL</li>
-<li>Some solutions enable user management, but natively SPARQL endpoints are built to be open and give the same access to all their users</li>
-</ul>
-<p>We will use the <strong>DBpedia SPARQL endpoint</strong>:</p>
-<blockquote><p><strong><a href="https://dbpedia.org/sparql">https://dbpedia.org/sparql</a></strong></p>
-</blockquote>
-<p><a href="https://wiki.dbpedia.org/">DBpedia</a> is a project to represent (parts of) Wikipedia as RDF, it has been used has a playground for the Semantic Web for years. The data is not controlled or curated, which lead to poor data quality (don't be surprised to find weird things)</p>
-<p>You can use a nicer query editor that can query any public SPARQL endpoint:</p>
 <blockquote><p><strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong></p>
 </blockquote>
 
@@ -13606,6 +13587,7 @@ jupyter sparqlkernel install --user
 <li>Use <code>BIND</code> to bind the produced string to a variable</li>
 <li>Make this string an URI using the <code>uri()</code> function</li>
 </ul>
+<p>Start from this query:</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">WHERE</span> <span class="p">{</span>
     <span class="nv">?country</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Country</span> <span class="p">;</span>
@@ -13640,7 +13622,7 @@ jupyter sparqlkernel install --user
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Count-aggregated-results">Count aggregated results<a class="anchor-link" href="#Count-aggregated-results">&#182;</a></h1><p>Count the number of books for each author 📚</p>
-<p>Starting from the query:</p>
+<p>Start from this query:</p>
 <div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="nv">?author</span>
 <span class="k">WHERE</span> <span class="p">{</span>
@@ -13771,7 +13753,7 @@ jupyter sparqlkernel install --user
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Group-by">Group by<a class="anchor-link" href="#Group-by">&#182;</a></h1><p>Group solutions by variable value.</p>
-<p>Get the average GDP for all countries grouped by the currency they use, starting from:</p>
+<p>Get the average GDP for all countries grouped by the currency they use. Start from:</p>
 <div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
 <span class="k">PREFIX</span> <span class="nn">dbp</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/property/&gt;</span>
 <span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -13863,18 +13845,18 @@ jupyter sparqlkernel install --user
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Retrieve-the-graph">Retrieve the graph<a class="anchor-link" href="#Retrieve-the-graph">&#182;</a></h1><p>Most triplestores supports graphs todays which enable to add a 4th object to the triple (usually to classify it in a larger graph of triples).</p>
+<h1 id="Get-the-graph">Get the graph<a class="anchor-link" href="#Get-the-graph">&#182;</a></h1><p>Most triplestores supports graphs todays which enable to add a 4th object to the triple (usually to classify it in a larger graph of triples).</p>
 <div class="highlight"><pre><span></span><span class="nv">&lt;http://subject&gt;</span><span class="w"> </span><span class="nv">&lt;http://predicate&gt;</span><span class="w"> </span><span class="nv">&lt;http://object&gt;</span><span class="w"> </span><span class="nv">&lt;http://graph&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 </pre></div>
 <p>Also known as: context</p>
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
@@ -14230,17 +14212,7 @@ Return a graph specified by a template (build triples)</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SPARQL-query-breakdown-&#129516;">SPARQL query breakdown &#129516;<a class="anchor-link" href="#SPARQL-query-breakdown-&#129516;">&#182;</a></h1><p><img src="sparql_query_breakdown.png"></p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Search-on-DBpedia-&#128270;">Search on DBpedia &#128270;<a class="anchor-link" href="#Search-on-DBpedia-&#128270;">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL query on DBpedia</p>
-<blockquote><p>Find DBpedia classes and relations: search on google, e.g.: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</p>
-</blockquote>
 <ol>
 <li><p>Calculate countries density. Density = <code>dbo:populationTotal</code> / <code>dbo:PopulatedPlace/areaTotal</code></p>
 </li>
@@ -14249,8 +14221,6 @@ Return a graph specified by a template (build triples)</p>
 <li><p>All books with a name in english starting with "http" ignoring case</p>
 </li>
 </ol>
-<blockquote><p><strong>Search for functions in the specifications: <a href="https://www.w3.org/TR/sparql11-query">https://www.w3.org/TR/sparql11-query</a></strong></p>
-</blockquote>
 
 </div>
 </div>
@@ -14258,7 +14228,7 @@ Return a graph specified by a template (build triples)</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-Compute-countries-density">1. Compute countries density<a class="anchor-link" href="#1.-Compute-countries-density">&#182;</a></h2>
+<h2 id="1.-Calculate-countries-density">1. Calculate countries density<a class="anchor-link" href="#1.-Calculate-countries-density">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14285,15 +14255,16 @@ Return a graph specified by a template (build triples)</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Useful-links-&#128295;">Useful links &#128295;<a class="anchor-link" href="#Useful-links-&#128295;">&#182;</a></h1><ul>
+<li>Use <strong><a href="http://prefix.cc/">prefix.cc</a></strong> to resolve mysterious prefixes.</li>
+<li>Search for functions in the specifications: <strong><a href="https://www.w3.org/TR/sparql11-query">https://www.w3.org/TR/sparql11-query</a></strong></li>
+<li>How do I find vocabulary to use in my SPARQL query from DBpedia? Search in <strong><a href="http://mappings.dbpedia.org/server/ontology/classes/">DBpedia ontology classes</a></strong>, or on google, e.g., search for: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</li>
+</ul>
 <h1 id="Public-SPARQL-endpoints-&#128279;">Public SPARQL endpoints &#128279;<a class="anchor-link" href="#Public-SPARQL-endpoints-&#128279;">&#182;</a></h1><ul>
 <li>Wikidata, facts powering Wikipedia infobox: <a href="https://query.wikidata.org/sparql">https://query.wikidata.org/sparql</a></li>
 <li>Bio2RDF, linked data for the life sciences: <a href="https://bio2rdf.org/sparql">https://bio2rdf.org/sparql</a></li>
 <li>Disgenet, gene-disease association: <a href="http://rdf.disgenet.org/sparql">http://rdf.disgenet.org/sparql</a></li>
 <li>PathwayCommons, resource for biological pathways analysis: <a href="http://rdf.pathwaycommons.org/sparql">http://rdf.pathwaycommons.org/sparql</a></li>
-</ul>
-<h1 id="Going-further">Going further<a class="anchor-link" href="#Going-further">&#182;</a></h1><ul>
-<li>Wikidata SPARQL queries around the SARS-CoV-2 virus and pandemic: <a href="https://egonw.github.io/SARS-CoV-2-Queries">https://egonw.github.io/SARS-CoV-2-Queries</a></li>
-<li>Use <a href="http://prefix.cc/">prefix.cc</a> to resolve mysterious prefixes.</li>
 </ul>
 
 </div>
