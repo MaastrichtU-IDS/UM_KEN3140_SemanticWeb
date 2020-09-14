@@ -13379,7 +13379,7 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="c"># Set the SPARQL Kernel parameters</span>
@@ -13441,7 +13441,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Run-your-first-SPARQL-query">Run your first SPARQL query<a class="anchor-link" href="#Run-your-first-SPARQL-query">&#182;</a></h1><p>Ask for <strong><a href="http://yasgui.triply.cc/#query=SELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fsubject%20%3Fpredicate%20%3Fobject%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all triples in DBpedia</a></strong>:</p>
+<h1 id="1.-Run-your-first-SPARQL-query">1. Run your first SPARQL query<a class="anchor-link" href="#1.-Run-your-first-SPARQL-query">&#182;</a></h1><p>Ask for <strong><a href="http://yasgui.triply.cc/#query=SELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fsubject%20%3Fpredicate%20%3Fobject%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all triples in DBpedia</a></strong>:</p>
 
 </div>
 </div>
@@ -13535,7 +13535,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Get-the-instances-of-a-class">Get the instances of a class<a class="anchor-link" href="#Get-the-instances-of-a-class">&#182;</a></h1><p>Use the standard predicate <code>rdf:type</code> to get <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20dbo%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT%20*%0AWHERE%20%7B%0A%20%20%3Fbook%20rdf%3Atype%20dbo%3ABook%20.%0A%7D%0A&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all the books in DBpedia 📚</a></strong></p>
+<h1 id="2.-Get-the-instances-of-a-class">2. Get the instances of a class<a class="anchor-link" href="#2.-Get-the-instances-of-a-class">&#182;</a></h1><p>Use the standard predicate <code>rdf:type</code> to get <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20dbo%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT%20*%0AWHERE%20%7B%0A%20%20%3Fbook%20rdf%3Atype%20dbo%3ABook%20.%0A%7D%0A&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table">all the books in DBpedia 📚</a></strong></p>
 <p>Copy and paste the query below into <strong><a href="https://yasgui.triply.cc">yasgui.triply.cc</a></strong> (make sure the SPARQL endpoint is specified as <a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a>)</p>
 
 </div>
@@ -13600,14 +13600,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Get-property-of-class">Get property of class<a class="anchor-link" href="#Get-property-of-class">&#182;</a></h1><p>Get <a href="http://yasgui.triply.cc/#query=PREFIX%20dbo%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20.%0A%20%20%20%20%3Fbook%20dbo%3Aauthor%20%3Fauthor%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><strong>the author of each returned book</strong> 🖋️</a> (when an author is defined):</p>
+<h1 id="3.-Get-property-of-class">3. Get property of class<a class="anchor-link" href="#3.-Get-property-of-class">&#182;</a></h1><p>Get <a href="http://yasgui.triply.cc/#query=PREFIX%20dbo%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT%20*%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20.%0A%20%20%20%20%3Fbook%20dbo%3Aauthor%20%3Fauthor%20.%0A%7D&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><strong>the author of each returned book</strong> 🖋️</a> (when an author is defined):</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
@@ -13666,7 +13666,6 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>How would you modify the query above to return the number of authors for the book that has the <strong>English</strong> title: "1066 and All That"?</p>
 <p>A Turtle-like syntax can also be used in SPARQL to make the query more readable:</p>
 <div class="highlight"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
 <span class="k">SELECT</span> <span class="o">*</span>
@@ -13710,7 +13709,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Retrieve-specific-variables-and-limit">Retrieve specific variables and limit<a class="anchor-link" href="#Retrieve-specific-variables-and-limit">&#182;</a></h1><p>You can specify the variables you want to be returned. And <code>LIMIT</code> the number of results returned.</p>
+<h1 id="4.-Retrieve-specific-variables-and-limit">4. Retrieve specific variables and limit<a class="anchor-link" href="#4.-Retrieve-specific-variables-and-limit">&#182;</a></h1><p>You can specify the variables you want to be returned. And <code>LIMIT</code> the number of results returned.</p>
 <p>This query will return 10 authors of books in DBpedia, with duplicates if the author wrote multiple books 👥</p>
 
 </div>
@@ -13757,7 +13756,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Retrieve-distinct-results">Retrieve distinct results<a class="anchor-link" href="#Retrieve-distinct-results">&#182;</a></h1><p>You can also enforce that only unique <code>DISTINCT</code> results are returned</p>
+<h1 id="5.-Retrieve-distinct-results">5. Retrieve distinct results<a class="anchor-link" href="#5.-Retrieve-distinct-results">&#182;</a></h1><p>You can also enforce that only unique <code>DISTINCT</code> results are returned</p>
 <blockquote><p>Use the <code>*</code> if you want all variables</p>
 </blockquote>
 <p>This query will return all authors of books in DBpedia <strong>without duplicates</strong>, even if they wrote multiple books 👤</p>
@@ -13805,6 +13804,189 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Your-turn-&#127916;">Your turn &#127916;<a class="anchor-link" href="#Your-turn-&#127916;">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL queries on the DBpedia RDF graph to retrieve the following answers below:</p>
+<ol>
+<li><p>Get the list of movies (<code>dbo:Film</code>) without duplicates 🎥</p>
+</li>
+<li><p>Get the list of movies (<code>dbo:Film</code>) and the actors who star in this movie (<code>dbo:starring</code>)</p>
+</li>
+<li><p>Get the label of the movie (return <code>?movieLabel ?actor</code>, not the movie URI)</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Get the list of movies (<code>dbo:Film</code>) without duplicates</li>
+</ol>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="nv">?movie</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?movie</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Film</span> <span class="p">.</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>movie</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/4000_Miles" target="_other">http://dbpedia.org/resource/4000_Miles</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/The_Man_Who_Came_Back" target="_other">http://dbpedia.org/resource/The_Man_Who_Came_Back</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/12_Monkeys" target="_other">http://dbpedia.org/resource/12_Monkeys</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Airplane!" target="_other">http://dbpedia.org/resource/Airplane!</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/American_Beauty_(1999_film)" target="_other">http://dbpedia.org/resource/American_Beauty_(1999_film)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Amélie" target="_other">http://dbpedia.org/resource/Amélie</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Andrzej_Wajda" target="_other">http://dbpedia.org/resource/Andrzej_Wajda</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Animal_Crackers_(1930_film)" target="_other">http://dbpedia.org/resource/Animal_Crackers_(1930_film)</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Animated_cartoon" target="_other">http://dbpedia.org/resource/Animated_cartoon</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Anne_of_the_Thousand_Days" target="_other">http://dbpedia.org/resource/Anne_of_the_Thousand_Days</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Anywhere_but_Here_(film)" target="_other">http://dbpedia.org/resource/Anywhere_but_Here_(film)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Armageddon_(1998_film)" target="_other">http://dbpedia.org/resource/Armageddon_(1998_film)</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Arms_and_the_Man" target="_other">http://dbpedia.org/resource/Arms_and_the_Man</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Balducci_levitation" target="_other">http://dbpedia.org/resource/Balducci_levitation</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Beautiful_Girls_(film)" target="_other">http://dbpedia.org/resource/Beautiful_Girls_(film)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Berry" target="_other">http://dbpedia.org/resource/Berry</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Black_Narcissus" target="_other">http://dbpedia.org/resource/Black_Narcissus</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Black_tie" target="_other">http://dbpedia.org/resource/Black_tie</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Breakfast_at_Tiffany's_(film)" target="_other">http://dbpedia.org/resource/Breakfast_at_Tiffany's_(film)</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Carry_On_(franchise)" target="_other">http://dbpedia.org/resource/Carry_On_(franchise)</a></td></tr></table><div class="tinfo">Total: 10000, Shown: 20</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Get the list of movies (<code>dbo:Film</code>) and the actors who star in this movie (<code>dbo:starring</code>)</li>
+</ol>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="nv">?movie</span> <span class="nv">?actor</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?movie</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Film</span> <span class="p">;</span>
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">starring</span> <span class="nv">?actor</span> <span class="p">.</span>
+<span class="p">}</span> 
+<span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>movie</th>
+<th>actor</th></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/12_Monkeys" target="_other">http://dbpedia.org/resource/12_Monkeys</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/12_Monkeys" target="_other">http://dbpedia.org/resource/12_Monkeys</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Madeleine_Stowe" target="_other">http://dbpedia.org/resource/Madeleine_Stowe</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/12_Monkeys" target="_other">http://dbpedia.org/resource/12_Monkeys</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Bruce_Willis" target="_other">http://dbpedia.org/resource/Bruce_Willis</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/12_Monkeys" target="_other">http://dbpedia.org/resource/12_Monkeys</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Christopher_Plummer" target="_other">http://dbpedia.org/resource/Christopher_Plummer</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Amélie" target="_other">http://dbpedia.org/resource/Amélie</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Audrey_Tautou" target="_other">http://dbpedia.org/resource/Audrey_Tautou</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Amélie" target="_other">http://dbpedia.org/resource/Amélie</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Mathieu_Kassovitz" target="_other">http://dbpedia.org/resource/Mathieu_Kassovitz</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Animal_Crackers_(1930_film)" target="_other">http://dbpedia.org/resource/Animal_Crackers_(1930_film)</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Zeppo_Marx" target="_other">http://dbpedia.org/resource/Zeppo_Marx</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Animal_Crackers_(1930_film)" target="_other">http://dbpedia.org/resource/Animal_Crackers_(1930_film)</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Groucho_Marx" target="_other">http://dbpedia.org/resource/Groucho_Marx</a></td></tr><tr class=odd><td class=val><a href="http://dbpedia.org/resource/Animal_Crackers_(1930_film)" target="_other">http://dbpedia.org/resource/Animal_Crackers_(1930_film)</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Chico_Marx" target="_other">http://dbpedia.org/resource/Chico_Marx</a></td></tr><tr class=even><td class=val><a href="http://dbpedia.org/resource/Animal_Crackers_(1930_film)" target="_other">http://dbpedia.org/resource/Animal_Crackers_(1930_film)</a></td>
+<td class=val><a href="http://dbpedia.org/resource/Harpo_Marx" target="_other">http://dbpedia.org/resource/Harpo_Marx</a></td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Get the label of the movie (return <code>?movieLabel ?actor</code>, not the movie URI)</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span> <span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="nv">?movieLabel</span> <span class="nv">?actor</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?movie</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Film</span> <span class="p">;</span>
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">starring</span> <span class="nv">?actor</span> <span class="p">;</span>
+        <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?movieLabel</span> <span class="p">.</span>
+<span class="p">}</span> 
+<span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div class="krn-spql"><table><tr class=hdr><th>movieLabel</th>
+<th>actor</th></tr><tr class=odd><td class=val>12 Monkeys</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val>12 قردا</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=odd><td class=val>12 Monkeys</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val>Doce monos</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=odd><td class=val>L'Armée des douze singes</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val>L'esercito delle 12 scimmie</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=odd><td class=val>12モンキーズ</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val>12 Monkeys (film)</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=odd><td class=val>12 małp</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr><tr class=even><td class=val>Twelve Monkeys</td>
+<td class=val><a href="http://dbpedia.org/resource/Brad_Pitt" target="_other">http://dbpedia.org/resource/Brad_Pitt</a></td></tr></table><div class="tinfo">Total: 10, Shown: 10</div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="FILTER-the-results">FILTER the results<a class="anchor-link" href="#FILTER-the-results">&#182;</a></h1><h2 id="Comparison-operators:-&lt;,-=,-&gt;,-&lt;=,-&gt;=,-!=">Comparison operators: &lt;, =, &gt;, &lt;=, &gt;=, !=<a class="anchor-link" href="#Comparison-operators:-&lt;,-=,-&gt;,-&lt;=,-&gt;=,-!=">&#182;</a></h2><ul>
 <li>Comparison of data literals according to natural order</li>
 <li>Support for numerical data types, xsd:dateTime, xsd:string (alphabetic ordering), xsd:Boolean (1&gt;0)</li>
@@ -13823,7 +14005,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Filter-by-number-of-pages">Filter by number of pages<a class="anchor-link" href="#Filter-by-number-of-pages">&#182;</a></h1><p>This query will return 10 authors who wrote a book with more than 500 pages 📖</p>
+<h1 id="6.-Filter-by-number-of-pages">6. Filter by number of pages<a class="anchor-link" href="#6.-Filter-by-number-of-pages">&#182;</a></h1><p>This query will return 10 authors who wrote a book with more than 500 pages 📖</p>
 
 </div>
 </div>
@@ -13870,7 +14052,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Filter-books-on-name-content">Filter books on name content<a class="anchor-link" href="#Filter-books-on-name-content">&#182;</a></h1><ul>
+<h1 id="7.-Filter-books-on-name-content">7. Filter books on name content<a class="anchor-link" href="#7.-Filter-books-on-name-content">&#182;</a></h1><ul>
 <li>Cast the variable <code>?name</code> using the <code>str()</code> function, to avoid datatypes incompatibility</li>
 <li>Use the <strong>function</strong> <code>contains(string_to_look_in,string_to_look_for)</code> to only keep books with the string "grand" in their label 🏷️</li>
 </ul>
@@ -13953,7 +14135,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Return-results-from-different-patterns">Return results from different patterns<a class="anchor-link" href="#Return-results-from-different-patterns">&#182;</a></h1><p>Use <code>UNION</code> to return the books name wherever it is defined with <code>rdfs:label</code> or <code>dbp:name</code>:</p>
+<h1 id="8.-Return-results-from-different-patterns">8. Return results from different patterns<a class="anchor-link" href="#8.-Return-results-from-different-patterns">&#182;</a></h1><p>Use <code>UNION</code> to return the books name wherever it is defined with <code>rdfs:label</code> or <code>dbp:name</code>:</p>
 
 </div>
 </div>
@@ -14073,7 +14255,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Get-the-language-of-a-literal">Get the language of a literal<a class="anchor-link" href="#Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the language of the book label 💬</p>
+<h1 id="9.-Get-the-language-of-a-literal">9. Get the language of a literal<a class="anchor-link" href="#9.-Get-the-language-of-a-literal">&#182;</a></h1><p>We can use the <code>lang()</code> function in the <code>SELECT</code> statement to return the language of the book label 💬</p>
 <blockquote><p>Give it a name using the keyword <code>as</code></p>
 </blockquote>
 
@@ -14203,7 +14385,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting-results">Sorting results<a class="anchor-link" href="#Sorting-results">&#182;</a></h1><p>We can use <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code></a></strong>, to order the books by the number of pages it contains in ascending order by default 📤</p>
+<h1 id="10.-Sorting-results">10. Sorting results<a class="anchor-link" href="#10.-Sorting-results">&#182;</a></h1><p>We can use <strong><a href="https://yasgui.triply.cc/#query=PREFIX%20dbo%3A%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fname%20%3Fauthor%20%3Fpages%20%3Fbook%0AWHERE%20%7B%0A%20%20%20%20%3Fbook%20a%20dbo%3ABook%20%3B%0A%20%20%20%20%20%20%20%20dbo%3Aauthor%20%3Fauthor%20%3B%0A%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname%20%3B%0A%20%20%20%20%20%20%20%20dbo%3AnumberOfPages%20%3Fpages%20.%0A%7D%20%0AORDER%20BY%20%3Fpages%0ALIMIT%2010&amp;endpoint=https%3A%2F%2Fdbpedia.org%2Fsparql&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&amp;contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&amp;outputFormat=table"><code>ORDER BY</code></a></strong>, to order the books by the number of pages it contains in ascending order by default 📤</p>
 
 </div>
 </div>
@@ -14349,13 +14531,67 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="11.-Count-results">11. Count results<a class="anchor-link" href="#11.-Count-results">&#182;</a></h1><p>Count the number of books</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">SELECT</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?book</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?book_count</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">.</span>
+<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Count-a-specific-pattern">Count a specific pattern<a class="anchor-link" href="#Count-a-specific-pattern">&#182;</a></h1><p>We can also count how many row of a pattern are returned</p>
+<p>Count the number of books for each author 📚</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-sparql-nb"><pre><span></span><span class="k">PREFIX</span> <span class="nn">dbo</span><span class="p">:</span><span class="nl">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span class="k">SELECT</span> <span class="nv">?author</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?book</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?book_count</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?book</span> <span class="k">a</span> <span class="nn">dbo</span><span class="p">:</span><span class="nt">Book</span> <span class="p">;</span>
+        <span class="nn">dbo</span><span class="p">:</span><span class="nt">author</span> <span class="nv">?author</span> <span class="p">.</span>
+<span class="p">}</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Search-on-DBpedia-&#128270;">Search on DBpedia &#128270;<a class="anchor-link" href="#Search-on-DBpedia-&#128270;">&#182;</a></h1><p>Use <strong><a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a></strong> to write and run SPARQL queries on the DBpedia RDF graph to retrieve the following answers below:</p>
-<blockquote><p>How do I find vocabulary to use in my SPARQL query from DBpedia? Search on google, e.g., if you want to know the term for "capital city" in DBpedia, search for: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</p>
+<blockquote><p>How do I find vocabulary to use in my SPARQL query from DBpedia? Search in <strong><a href="http://mappings.dbpedia.org/server/ontology/classes/">DBpedia ontology classes</a></strong>, or on google, e.g., if you want to know the term for "capital city" in DBpedia, search for: "<strong><a href="https://www.google.com/search?&amp;q=dbpedia+capital">dbpedia capital</a></strong>"</p>
 </blockquote>
 <ol>
-<li><p>The capital (<a href="http://dbpedia.org/ontology/capital">dbo:capital</a>) of the country in which authors of books are born (<a href="http://dbpedia.org/ontology/birthPlace">dbo:birthPlace</a>), limit to 10</p>
+<li><p>List 10 authors and the capital cities (<a href="http://dbpedia.org/ontology/capital">dbo:capital</a>) of the countries in which they were born (<a href="http://dbpedia.org/ontology/birthPlace">dbo:birthPlace</a>)</p>
 </li>
-<li><p>All books with a name in english starting with "http" ignoring case</p>
+<li><p>The number of authors for the book that has the <strong>English</strong> title: "1066 and All That"</p>
+</li>
+<li><p>All books with a name in <strong>English</strong> starting with "http." ignoring case</p>
 </li>
 <li><p>A list of all the unique book categories (dct:subject) for all short books (less than 300 pages) written by authors who were born in Amsterdam</p>
 </li>
