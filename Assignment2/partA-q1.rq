@@ -1,7 +1,0 @@
-PREFIX schema: <https://schema.org/>
-PREFIX family: <https://my-family.org/>
-SELECT * 
-WHERE {
-    ?entity a schema:Person ;
-              schema:parent ?parent .
-}
