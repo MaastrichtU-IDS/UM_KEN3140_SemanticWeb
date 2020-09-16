@@ -24,7 +24,7 @@ cd UM_KEN3140_SemanticWeb
 * On **Linux** and **MacOS**, start JupyterLab on http://localhost:8888 and share the current directory in the container:
 
 ```bash
-docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
+docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD umids/jupyterlab:sparql
 ```
 
 > Your current directory is shared in `/home/jovyan` in the Docker container.
