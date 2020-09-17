@@ -13328,10 +13328,13 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Install-the-SPARQL-kernel">Install the SPARQL kernel<a class="anchor-link" href="#Install-the-SPARQL-kernel">&#182;</a></h1><p>This notebook uses the SPARQL Kernel to define and <strong>execute SPARQL queries in the notebook</strong> codeblocks.
-To <strong>install the SPARQL Kernel</strong> in your JupyterLab installation:</p>
+<h1 id="Install-the-SPARQL-kernel">Install the SPARQL kernel<a class="anchor-link" href="#Install-the-SPARQL-kernel">&#182;</a></h1><p>This notebook uses the SPARQL Kernel to define and <strong>execute SPARQL queries in the notebook</strong> codeblocks.</p>
+<p>You can <strong>install the SPARQL Kernel</strong> locally (or with Conda):</p>
 <div class="highlight"><pre><span></span>pip install sparqlkernel --user
 jupyter sparqlkernel install --user
+</pre></div>
+<p>Or use a Docker image (similar to the one for Java):</p>
+<div class="highlight"><pre><span></span>docker run -it --rm -p <span class="m">8888</span>:8888 -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/jovyan -e <span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes -e <span class="nv">JUPYTER_TOKEN</span><span class="o">=</span>YOURPASSWORD umids/jupyterlab:sparql
 </pre></div>
 <p>To start running SPARQL query in this notebook, we need to define the <strong>SPARQL kernel parameters</strong>:</p>
 
