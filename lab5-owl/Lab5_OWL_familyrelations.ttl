@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
 @prefix wde: <https://www.wikidata.org/wiki/> .
 @prefix wdp: <http://www.wikidata.org/wiki/Property:> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 
 myfamily:Male rdfs:subClassOf schema:Person .
 myfamily:Female rdfs:subClassOf schema:Person .
