@@ -1,20 +1,28 @@
 # IDS Semantic Web course
 
-Repository with resources and materials for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
+This repository contains resources and materials for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
 
 > We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes.
 
-## Start JupyterLab
+## Run the notebooks
 
-We will need to run Java using a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) with Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab already prepared.
+We will need to run Java code in jupyter notebooks with Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab and all requirements to run those notebooks already installed.
 
-> Jupyter notebooks are usually used with Python or R applications, but they can be used with any programming language as long as a kernel as been implemented for this language.
+Once JupyterLab has been started browse to the different folders, and run the notebooks.
 
-### Run with Docker
+> Note: Jupyter notebooks are usually used with Python or R applications, but they can be used with any programming language as long as a kernel as been implemented for this language.
 
-[Use Docker](https://docs.docker.com/get-docker/) to run JupyterLab with Java in a container.
+### Run on the DSRI
 
-Clone this directory:
+If you are working or studying at Maastricht University you can have access to the Data Science Research Infrastructure (DSRI). If you don't already have access to the DSRI you can [visit this page](https://maastrichtu-ids.github.io/dsri-documentation/docs/access-dsri).
+
+You can easily start this repository in JupyterLab on the DSRI using the JupyterLab template in the Catalog. When you are requested to enter the parameters of your JupyterLab instance you can provide the URL of this repository (https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb) to be automatically cloned in JupyterLab. See more [documentation to start JupyterLab on the DSRI](https://maastrichtu-ids.github.io/dsri-documentation/docs/deploy-jupyter).
+
+### Run locally with Docker
+
+[Install Docker](https://docs.docker.com/get-docker/) to run JupyterLab with Java in a container. We use the Docker image defined at https://github.com/MaastrichtU-IDS/jupyterlab
+
+To run the notebooks in this repository locally, first clone the directory:
 
 ```bash
 git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
@@ -24,7 +32,7 @@ cd UM_KEN3140_SemanticWeb
 * On **Linux** and **MacOS**, start JupyterLab on http://localhost:8888 and share the current directory in the container:
 
 ```bash
-docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD umids/jupyterlab:sparql
+docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD ghcr.io/maastrichtu-ids/jupyterlab:latest
 ```
 
 > Your current directory is shared in `/home/jovyan` in the Docker container.
@@ -32,27 +40,19 @@ docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=ye
 * The same command on **Windows**, the variable to share the current directory is different:
 
 ```powershell
-docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD jbindinga/java-notebook 
-```
-
-### Install the SPARQL kernel
-
-Install the SPARQL kernel to run SPARQL notebooks, run this command locally or in the Docker container depending on your installation.
-
-```bash
-pip install sparqlkernel --user
-jupyter sparqlkernel install --user
+docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD ghcr.io/maastrichtu-ids/jupyterlab:latest
 ```
 
 ## Tools documentation
 
-Links to documentation of the different tools used in the course:
+Some links to documentation of tools used in the course:
 
-* [OWLAPI documentation](https://github.com/owlcs/owlapi/wiki/Documentation)
-* [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/)
-* [rdflib documentation](https://rdflib.readthedocs.io/en/stable/)
-* [Ontospy documentation](http://lambdamusic.github.io/Ontospy)
-* Convert Jupyter Notebook to HTML slides:
+* [OWLAPI documentation](https://github.com/owlcs/owlapi/wiki/Documentation) (java)
+* [rdflib documentation](https://rdflib.readthedocs.io/en/stable/) (python)
+* [Owlready2 documentation](https://owlready2.readthedocs.io/en/latest/) (python)
+* [Ontospy documentation](http://lambdamusic.github.io/Ontospy) (python)
+
+Convert Jupyter Notebook to HTML slides:
 
 ```bash
 jupyter nbconvert lab4-sparql/Lab4_SPARQL_demo.ipynb --to slides --output-dir docs
