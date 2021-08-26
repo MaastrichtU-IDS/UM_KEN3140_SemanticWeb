@@ -1,4 +1,3 @@
-sparqlkernel
 rdflib
 SPARQLWrapper
 Owlready2
