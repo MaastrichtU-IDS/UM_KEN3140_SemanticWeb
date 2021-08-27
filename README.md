@@ -34,7 +34,7 @@ cd UM_KEN3140_SemanticWeb
 * On **Linux** and **MacOS**, start JupyterLab on http://localhost:8888 and share the current directory in the container:
 
 ```bash
-docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD ghcr.io/maastrichtu-ids/jupyterlab:latest
+docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan/work -e JUPYTER_TOKEN=yourpassword ghcr.io/maastrichtu-ids/jupyterlab:latest
 ```
 
 > Your current directory is shared in `/home/jovyan` in the Docker container.
@@ -42,7 +42,7 @@ docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan -e JUPYTER_ENABLE_LAB=ye
 * The same command on **Windows**, the variable to share the current directory is different:
 
 ```powershell
-docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=YOURPASSWORD ghcr.io/maastrichtu-ids/jupyterlab:latest
+docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan/work -e JUPYTER_TOKEN=yourpassword ghcr.io/maastrichtu-ids/jupyterlab:latest
 ```
 
 ## Tools documentation
