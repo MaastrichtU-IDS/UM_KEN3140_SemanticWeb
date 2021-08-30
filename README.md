@@ -45,6 +45,20 @@ docker run -it --rm -p 8888:8888 -v $(pwd):/home/jovyan/work -e JUPYTER_TOKEN=yo
 docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan/work -e JUPYTER_TOKEN=yourpassword ghcr.io/maastrichtu-ids/jupyterlab:latest
 ```
 
+### Run locally with conda
+
+You can also locally install all the requirements directly on your laptop by following the different
+
+Download iJava at https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip , unzip it and install it with:
+
+```bash
+python3 install.py --sys-prefix
+```
+
+You can check the `prepare.sh` file in the `bin` folder to find the command to download all Jars file required for the course
+
+You can find the full file describing the commands  to build the Docker image in [this repository](https://github.com/MaastrichtU-IDS/jupyterlab/blob/main/Dockerfile)
+
 ## Tools documentation
 
 Some links to documentation of tools used in the course:
