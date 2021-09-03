@@ -2,11 +2,18 @@
 
 This repository contains resources and materials for the Semantic Web course given by the [Institute of Data Science](https://maastrichtuniversity.nl/ids) at Maastricht University.
 
-> We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes.
+Each lab is in a different folder.
+
+Slides about the SPARQL query language are available here:
+
+* [Introduction to SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/Lab4_SPARQL_demo.slides.html#/)
+* [Advanced SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/Lab4_SPARQL_advanced.slides.html#/)
+
+> We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes, feel free to submit pull requests to improve the labs!
 
 ## Run the notebooks
 
-We will need to run Java code in jupyter notebooks with Java kernel (see [IJava documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab and all requirements to run those notebooks already installed.
+You will need to run Java code in jupyter notebooks with Java kernel (see the [IJava kernel documentation](https://github.com/SpencerPark/IJava)), the easiest is to run a [Docker](https://docs.docker.com/get-docker) container with JupyterLab, and all requirements to run the notebooks already installed.
 
 Once JupyterLab has been started browse to the different folders for the labs, read the instructions, and run the notebooks.
 
@@ -16,7 +23,9 @@ Once JupyterLab has been started browse to the different folders for the labs, r
 
 If you are working or studying at Maastricht University you can have access to the Data Science Research Infrastructure (DSRI). If you don't already have access to the DSRI you can [visit this page](https://maastrichtu-ids.github.io/dsri-documentation/docs/access-dsri).
 
-You can easily start this repository in JupyterLab on the DSRI using the JupyterLab template in the Catalog. When you are requested to enter the parameters of your JupyterLab instance you can provide the URL of this repository (https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb) to be automatically cloned in JupyterLab. 
+You can easily start this repository in JupyterLab on the DSRI using the JupyterLab template in the Catalog. First create a project if you don't already have one. Use something like `workspace-lastname` for the name.
+
+You can then go to the tab **+Add**, and click **From Catalog**, search for JupyterLab template in the Catalog (make sure the template checkbox is checked). When you are requested to enter the parameters of your JupyterLab instance you can provide the URL of this repository: `https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb` to be automatically cloned in JupyterLab. 
 
 See the [documentation to start JupyterLab on the DSRI](https://maastrichtu-ids.github.io/dsri-documentation/docs/deploy-jupyter) for more details.
 
@@ -24,7 +33,7 @@ See the [documentation to start JupyterLab on the DSRI](https://maastrichtu-ids.
 
 [Install Docker](https://docs.docker.com/get-docker/) to run JupyterLab with Java in a container. We use the Docker image defined at https://github.com/MaastrichtU-IDS/jupyterlab
 
-To run the notebooks in this repository locally, first clone the directory:
+To run the notebooks in this repository locally, open a Bash terminal, or PowerShell on Windows, and clone the directory:
 
 ```bash
 git clone https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb.git
