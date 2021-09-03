@@ -6,8 +6,8 @@ Each lab is in a different folder.
 
 Slides about the SPARQL query language are available here:
 
-* [Introduction to SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/Lab4_SPARQL_demo.slides.html#/)
-* [Advanced SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/Lab4_SPARQL_advanced.slides.html#/)
+* [Introduction to SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/SPARQL_intro.slides.html#/)
+* [Advanced SPARQL](https://maastrichtu-ids.github.io/UM_KEN3140_SemanticWeb/SPARQL_advanced.slides.html#/)
 
 > We recommend you to [fork the repository](https://github.com/MaastrichtU-IDS/UM_KEN3140_SemanticWeb/fork) if you want to make changes, feel free to submit pull requests to improve the labs!
 
@@ -80,6 +80,6 @@ Some links to documentation of tools used in the course:
 Convert Jupyter Notebook to HTML slides:
 
 ```bash
-jupyter nbconvert lab4-sparql/Lab4_SPARQL_demo.ipynb --to slides --output-dir docs
+jupyter nbconvert docs/SPARQL_intro.ipynb --to slides --output-dir docs
 ```
 
