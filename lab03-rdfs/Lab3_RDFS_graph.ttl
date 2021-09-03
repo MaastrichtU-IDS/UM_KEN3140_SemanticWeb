@@ -1,0 +1,24 @@
+# KEN3140 - Lab 3 (RDFS)
+# Maastricht University, Institute of Data Science
+# Date: 2021/09/01
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.com/> .
+
+# Schema section:
+
+#:hasMother rdfs:subPropertyOf :hasParent .	# Lab 3 - Task 2
+#:isMotherOf rdfs:subPropertyOf :loves . 	# Lab 3 - Task 2
+#:Teenager rdfs:subClassOf :Adolescent . 	# Lab 3 - Task 1
+#:hasParent									# Lab 3 - Task 3
+#  rdfs:range :Person ;						# Lab 3 - Task 3
+#  rdfs:domain :Person .					# Lab 3 - Task 3
+
+# Data section:
+
+:angela :isMotherOf :kevin .
+:kevin
+  :hasMother :angela ;
+  a :Teenager ;
+  :hasAge "17.5"^^xsd:integer .
