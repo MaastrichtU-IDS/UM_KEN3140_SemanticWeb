@@ -887,6 +887,15 @@ myfamily:yeshaav rdf:type owl:NamedIndividual ,
                                                    owl:onProperty myfamily:hasHobby ;
                                                    owl:someValuesFrom myfamily:PCGame
                                                  ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty myfamily:hasHobby ;
+                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                       owl:unionOf ( myfamily:Comics
+                                                                                     myfamily:Cosplay
+                                                                                     myfamily:PCGame
+                                                                                   )
+                                                                     ]
+                                                 ]
                                                ) ;
                             rdf:type owl:Class
                           ] .
