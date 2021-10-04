@@ -1,0 +1,12 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX wdp: <http://www.wikidata.org/prop/direct/> 
+PREFIX wde: <http://www.wikidata.org/entity/> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?person ?givenName ?familyName
+WHERE {
+    ?person schema:familyName ?familyName .
+    ?person schema:givenName ?givenName .
+}
