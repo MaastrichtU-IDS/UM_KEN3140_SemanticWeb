@@ -1,9 +1,0 @@
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX schema: <http://schema.org/>
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX wdp: <http://www.wikidata.org/prop/direct/> 
-PREFIX wde: <http://www.wikidata.org/entity/> 
-SELECT ?person ?parent  
-WHERE {
-    ?person schema:parent ?parent .
-} 

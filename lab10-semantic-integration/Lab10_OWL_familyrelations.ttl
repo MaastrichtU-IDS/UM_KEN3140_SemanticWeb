@@ -7,36 +7,32 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix wdp: <http://www.wikidata.org/prop/direct/> .
 
+## RDF Graph 1: Kody's family relations graph 
+#############################################
+
 myfamily:Male rdfs:subClassOf schema:Person .
 myfamily:Female rdfs:subClassOf schema:Person .
 
+# Task 2: mappings
+# ....
 
-#define subproperty relationship
+# Task 3: mappings
+# ....
+
+# Task 4: mappings
+# ...
+
+# Task 5: mappings
+# ...
+
+schema:sibling rdfs:domain schema:Person;
+    rdfs:range schema:Person .
 
 myfamily:sister rdfs:subPropertyOf schema:sibling ;
-    rdfs:domain schema:Person ;
-    rdfs:range myfamily:Female .
+    rdfs:domain schema:Person .
 
 myfamily:brother rdfs:subPropertyOf schema:sibling ;
-    rdfs:domain schema:Person ;
-    rdfs:range myfamily:Male .
-
-#define rdfs:subPropertyOf relationship for mother and father properties
-# ....
-
-# definee owl:equivalentProperty properties
-# ....
-
-
-# inverseOf
-
-# equivalentProperty
-
-# cardinality
-
-# TransitiveProperty SymmetricProperty
-# owl:differentFrom 
-# owl:AllDifferent
+    rdfs:domain schema:Person .
 
 # Kody
 myfamily:kody a schema:Person, myfamily:Male;
@@ -374,7 +370,10 @@ wdp:P462 rdfs:label "Couleur"@fr .
 wdp:P462 rdfs:label "Farbe"@de .
 wdp:P462 rdfs:label "kleur"@nl .
 
-# statements added from WikiData (these statements can be constructed using SPARQL CONSTRUCT)
+## RDF Graph 2: A snippet of the Wikidata graph
+## containing information about people and their family members
+################################################################
+
 # William S. Hamilton
 <http://www.wikidata.org/entity/Q16066408> wdp:P106 <http://www.wikidata.org/entity/Q1607826>,
         <http://www.wikidata.org/entity/Q820037>,
