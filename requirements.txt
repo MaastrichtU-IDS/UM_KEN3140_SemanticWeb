@@ -2,4 +2,5 @@ rdflib
 SPARQLWrapper
 Owlready2
 networkx
-ontospy[FULL]
+ontospy
+#ontospy[FULL]
