@@ -1,2 +1,0 @@
-@prefix um: <myIRI> .
-um:kody um:name "Kody Moodley"@en . 
