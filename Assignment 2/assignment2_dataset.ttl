@@ -1,0 +1,274 @@
+@prefix ex: <http://example.org/> .                         
+@prefix schema: <http://schema.org/> .                    
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .        
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .   
+@prefix wde: <https://www.wikidata.org/wiki/> .           
+@prefix wdp: <http://www.wikidata.org/wiki/Property:> .   
+@prefix dbp: <http://dbpedia.org/property/> .  
+@prefix dbe: <https://dbpedia.org/page/> .   
+@prefix dbo: <https://dbpedia.org/ontology/> .   
+@prefix geo: <http://www.geonames.org/ontology#> .        
+@prefix wiki: <https://www.wikidata.org/wiki/>.
+@prefix : <http://example.org/voc#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+
+#university
+
+# Classes
+
+dbe:Researcher rdfs:subClassOf foaf:Person .
+dbe:Teacher rdfs:subClassOf foaf:Person .
+dbe:Student rdfs:subClassOf foaf:Person .
+
+#phd candidate
+wiki:Q12764792 rdfs:subClassOf dbe:Student, foaf:Person,dbe:Researcher.
+
+#professor
+wiki:Q121594 rdfs:subClassOf dbe:Researcher, dbe:Teacher .
+dbe:Assistant_professor rdfs:subClassOf wiki:Q121594, dbe:Researcher, dbe:Teacher.
+
+schema:Course a owl:Class .
+
+# Properties
+
+foaf:firstName rdf:type owl:DatatypeProperty ;
+               rdfs:domain foaf:Person ;
+               rdfs:range rdfs:Literal .
+			   
+foaf:lastName rdf:type owl:DatatypeProperty ;
+              rdfs:domain foaf:Person ;
+              rdfs:range rdfs:Literal .
+
+schema:teaches a owl:ObjectProperty ; 
+      rdfs:domain dbe:Teacher ;
+    	rdfs:range schema:Course .	
+
+:isTaughtBy owl:inverseOf schema:teaches .
+
+:givesLecture rdfs:subPropertyOf schema:teaches .
+:givesLab rdfs:subPropertyOf schema:teaches .
+
+schema:title a owl:DatatypeProperty ;
+	rdfs:range xsd:string .
+
+:isSupervisedBy a owl:ObjectProperty .
+schema:baseSalary a owl:DatatypeProperty ;
+	rdfs:domain schema:employee.
+
+# Alice
+ex:AliceDoe a schema:Person;
+    a wiki:Q12764792;
+    schema:baseSalary "500"^^xsd:positiveInteger;
+    :isSupervisedBy ex:JohnBrown;
+    dbp:age "22"^^xsd:positiveInteger;                      
+    schema:birthDate "2000-12-16"^^xsd:date;          
+    schema:familyName "Doe";
+    rdfs:label "Alice Doe";
+    schema:gender schema:Female;
+    schema:givenName "Alice";
+    schema:height "178"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:AryaParker, ex:PatrickWilson;
+    ex:classmate ex:KatrinePhill, ex:EricJohnson, ex:SelenaGarcia.
+
+
+# John
+ex:JohnBrown a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole wiki:Q121594;
+    schema:baseSalary "5300"^^xsd:positiveInteger;
+    dbp:age "53"^^xsd:positiveInteger;
+    schema:birthDate "1969-05-07"^^xsd:date;
+    schema:familyName "John";
+    rdfs:label "John Brown";
+    schema:gender schema:Male;
+    schema:givenName "John";
+    schema:height "185"^^xsd:positiveInteger;
+    schema:colleague ex:AryaParker, ex:FrankJones, ex:johnPitter, ex:codyModly, ex:JinzhouYang, ex:OzgeErten.
+
+# Arya
+ex:AryaParker a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole dbe:Assistant_professor;
+    schema:baseSalary "5000"^^xsd:positiveInteger;
+    dbp:age "57"^^xsd:positiveInteger;
+    schema:birthDate "1963-03-31"^^xsd:date;
+    schema:familyName "Parker";
+    rdfs:label "Arya Parker";
+    schema:gender schema:Female;
+    schema:givenName "Parker";
+    schema:height "164"^^xsd:positiveInteger;
+    schema:colleague ex:JohnBrown, ex:FrankJones, ex:johnPitter, ex:codyModly, ex:JinzhouYang, ex:OzgeErten.
+
+
+# Katrine
+ex:KatrinePhill a schema:Person;
+    a dbe:Researcher;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "65"^^xsd:positiveInteger;
+    schema:birthDate "1947-01-14"^^xsd:date;
+    schema:familyName "Phill";
+    rdfs:label "Katrine Phill";
+    schema:gender schema:Female;
+    schema:givenName "Katrine";
+    schema:height "175"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:FrankJones, ex:PatrickWilson;
+    ex:classmate ex:AliceDoe, ex:GeorgeAnderson, ex:EricJohnson, ex:SelenaGarcia, ex:KarenJones.
+    
+
+# Frank
+ex:FrankJones a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole dbe:Assistant_professor;
+    schema:baseSalary "4300"^^xsd:positiveInteger;
+    dbp:age "76"^^xsd:positiveInteger;
+    schema:birthDate "1946-12-23"^^xsd:date;
+    schema:familyName "Jones";
+    rdfs:label "Frank Jones";
+    schema:gender schema:Male;
+    schema:givenName "Frank";
+    schema:height "174"^^xsd:positiveInteger;
+    schema:colleague ex:JohnBrown, ex:AryaParker.
+
+# Karen
+ex:KarenJones a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "18"^^xsd:positiveInteger;
+    schema:birthDate "2004-06-17"^^xsd:date;
+    schema:familyName "Karen";
+    rdfs:label "Karen Jones";
+    schema:gender schema:Female;
+    schema:givenName "Karen";
+    schema:height "182"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:AryaParker, ex:FrankJones, ex:PatrickWilson;
+    ex:classmate ex:SelenaGarcia,ex:HarryLee, ex:KatrinePhill.
+
+# George
+ex:GeorgeAnderson a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "17"^^xsd:positiveInteger;
+    schema:birthDate "2005-02-11"^^xsd:date;
+    schema:familyName "Anderson";
+    rdfs:label "George Anderson";
+    schema:gender schema:Male;
+    schema:givenName "George";
+    schema:height "178"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:AryaParker,ex:FrankJones;
+    ex:classmate ex:KatrinePhill, ex:MelanieDavis, ex:HarryLee, ex:ElsaTaylor,ex:HarryLee.
+
+# Selena
+ex:SelenaGarcia a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "14"^^xsd:positiveInteger;
+    schema:birthDate "2008-12-25"^^xsd:date;
+    schema:familyName "Garcia";
+    rdfs:label "Selena Garcia";
+    schema:gender schema:Female;
+    schema:givenName "Garcia";
+    schema:height "172"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:PhillipMiller, ex:FrankJones ;
+    ex:classmate ex:AliceDoe, ex:MelanieDavis,ex:KatrinePhill.
+
+# Melanie
+ex:MelanieDavis a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "19"^^xsd:positiveInteger;
+    schema:birthDate "2003-07-18"^^xsd:date;
+    schema:familyName "Davis";
+    rdfs:label "Melanie Davis";
+    schema:gender schema:Female;
+    schema:givenName "Melanie";
+    schema:height "172"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:PhillipMiller, ex:FrankJones ;
+    ex:classmate ex:GeorgeAnderson, ex:SelenaGarcia, ex:HarryLee.
+
+
+# Eric
+ex:EricJohnson a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "16"^^xsd:positiveInteger;
+    schema:birthDate "2004-03-24"^^xsd:date;
+    schema:familyName "Johnson";
+    rdfs:label "Eric Johnson";
+    schema:gender schema:Male;
+    schema:givenName "Eric";
+    schema:height "174"^^xsd:positiveInteger;
+    schema:instructor ex:AryaParker, ex:PhillipMiller,ex:FrankJones ;
+    ex:classmate ex:AliceDoe, ex:KatrinePhill.
+
+
+# Phillip
+ex:PhillipMiller a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole wiki:Q121594;
+    schema:baseSalary "9500"^^xsd:positiveInteger;
+    dbp:age "38"^^xsd:positiveInteger;
+    schema:birthDate "1984-07-28"^^xsd:date;
+    schema:familyName "Miller";
+    rdfs:label "Phillip Miller";
+    schema:gender schema:Male;
+    schema:givenName "Phillip";
+    schema:height "184"^^xsd:positiveInteger;
+    schema:colleague ex:AryaParker, ex:FrankJones, ex:johnPitter, ex:codyModly, ex:JinzhouYang, ex:OzgeErten.
+
+# Phil
+ex:PhilJohnson a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole dbe:Assistant_professor;
+    schema:baseSalary "5200"^^xsd:positiveInteger;
+    dbp:age "40"^^xsd:positiveInteger;
+    schema:birthDate "1982-08-28"^^xsd:date;
+    schema:familyName "Johnson";
+    rdfs:label "Phil Johnson";
+    schema:gender schema:Male;
+    schema:givenName "Phil";
+    schema:height "189"^^xsd:positiveInteger;
+    schema:colleague ex:JohnBrown, ex:PhillipMiller.
+
+# Patrick
+ex:PatrickWilson a schema:Person;
+    schema:employee schema:CollegeOrUniversity;
+    dbo:playRole dbe:Assistant_professor;
+    schema:baseSalary "4700"^^xsd:positiveInteger;
+    dbp:age "45"^^xsd:positiveInteger;
+    schema:birthDate "1977-07-10"^^xsd:date;
+    schema:familyName "Wilson";
+    rdfs:label "Patrick Wilson";
+    schema:gender schema:Male;
+    schema:givenName "Patrick";
+    schema:height "175"^^xsd:positiveInteger;
+    schema:colleague ex:JohnBrown, ex:PhilJohnson.
+
+# Elsa
+ex:ElsaTaylor a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "21"^^xsd:positiveInteger;
+    schema:birthDate "2001-03-08"^^xsd:date;
+    schema:familyName "Taylor";
+    rdfs:label "Elsa Taylor";
+    schema:gender schema:Female;
+    schema:givenName "Elsa";
+    schema:height "155"^^xsd:positiveInteger;
+    schema:instructor ex:JohnBrown, ex:PatrickWilson;
+    ex:classmate ex:GeorgeAnderson, ex:SelenaGarcia, ex:HarryLee.
+
+# Harry
+ex:HarryLee a schema:Person;
+    dbo:student schema:CollegeOrUniversity;
+    dbp:age "22"^^xsd:positiveInteger;
+    schema:birthDate "2000-05-08"^^xsd:date;
+    schema:familyName "Lee";
+    rdfs:label "Harry Lee";
+    schema:gender schema:Male;
+    schema:givenName "Harry";
+    schema:height "177"^^xsd:positiveInteger;
+    schema:instructor ex:FrankJones, ex:PhilJohnson;
+    ex:classmate ex:GeorgeAnderson, ex:ElsaTaylor, ex:KarenJones, ex:MelanieDavis .
+
+
+
+
+
