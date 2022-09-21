@@ -1,0 +1,757 @@
+@prefix : <http://ids.maastrichtuniversity.nl/ontologies/familyrelations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wde: <https://www.wikidata.org/wiki/> .
+@prefix wdp: <http://www.wikidata.org/wiki/Property:> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix myfamily: <http://myfamily.com/ontology/> .
+@base <http://ids.maastrichtuniversity.nl/ontologies/familyrelations> .
+
+<http://ids.maastrichtuniversity.nl/ontologies/familyrelations> rdf:type owl:Ontology ;
+                                                                 owl:versionIRI <http://ids.maastrichtuniversity.nl/ontologies/familyrelations/1.0> ;
+                                                                 <http://purl.org/dc/elements/1.1/contributor> "Kody Moodley" ,
+                                                                                                               "Vincent Emonet" ;
+                                                                 owl:versionInfo 1.0 ,
+                                                                                 "Family relations ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/contributor
+<http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/age
+schema:age rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/baseSalary
+schema:baseSalary rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/birthDate
+schema:birthDate rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/deathDate
+schema:deathDate rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/familyName
+schema:familyName rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/givenName
+schema:givenName rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/height
+schema:height rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://myfamily.com/ontology/brother
+myfamily:brother rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf schema:sibling ;
+                 rdfs:domain schema:Person ;
+                 rdfs:range myfamily:Male .
+
+
+###  http://myfamily.com/ontology/contains
+myfamily:contains rdf:type owl:ObjectProperty .
+
+
+###  http://myfamily.com/ontology/hasPart
+myfamily:hasPart rdf:type owl:ObjectProperty .
+
+
+###  http://myfamily.com/ontology/hasPet
+myfamily:hasPet rdf:type owl:ObjectProperty .
+
+
+###  http://myfamily.com/ontology/sister
+myfamily:sister rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf schema:sibling ;
+                rdfs:domain schema:Person ;
+                rdfs:range myfamily:Female .
+
+
+###  http://schema.org/birthPlace
+schema:birthPlace rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/children
+schema:children rdf:type owl:ObjectProperty ;
+                owl:inverseOf schema:parent .
+
+
+###  http://schema.org/gender
+schema:gender rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty .
+
+
+###  http://schema.org/parent
+schema:parent rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/sibling
+schema:sibling rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://www.wikidata.org/wiki/Property:P26
+wdp:P26 rdf:type owl:ObjectProperty ,
+                 owl:SymmetricProperty ;
+        rdfs:label "Ehepartner"@de ,
+                   "echtgenoot"@nl ,
+                   "spouse"@en ,
+                   "époux"@fr .
+
+
+###  http://www.wikidata.org/wiki/Property:P462
+wdp:P462 rdf:type owl:ObjectProperty ;
+         rdfs:label "Couleur"@fr ,
+                    "Farbe"@de ,
+                    "colour"@en ,
+                    "kleur"@nl .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://myfamily.com/ontology/Dog
+myfamily:Dog rdf:type owl:Class ;
+             rdfs:subClassOf myfamily:Mammal .
+
+
+###  http://myfamily.com/ontology/Female
+myfamily:Female rdf:type owl:Class ;
+                rdfs:subClassOf schema:Person ;
+                owl:disjointWith myfamily:Male .
+
+
+###  http://myfamily.com/ontology/Male
+myfamily:Male rdf:type owl:Class ;
+              rdfs:subClassOf schema:Person .
+
+
+###  http://myfamily.com/ontology/Mammal
+myfamily:Mammal rdf:type owl:Class ;
+                rdfs:subClassOf myfamily:Vertebrate .
+
+
+###  http://myfamily.com/ontology/MammalianRedBloodCell
+myfamily:MammalianRedBloodCell rdf:type owl:Class ;
+                               rdfs:subClassOf myfamily:VertebrateRedBloodCell ,
+                                               [ rdf:type owl:Class ;
+                                                 owl:complementOf [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty myfamily:hasPart ;
+                                                                    owl:someValuesFrom myfamily:Nucleus
+                                                                  ]
+                                               ] .
+
+
+###  http://myfamily.com/ontology/Nucleus
+myfamily:Nucleus rdf:type owl:Class .
+
+
+###  http://myfamily.com/ontology/Vertebrate
+myfamily:Vertebrate rdf:type owl:Class .
+
+
+###  http://myfamily.com/ontology/VertebrateRedBloodCell
+myfamily:VertebrateRedBloodCell rdf:type owl:Class ;
+                                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                  owl:onProperty myfamily:hasPart ;
+                                                  owl:someValuesFrom myfamily:Nucleus
+                                                ] .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class ;
+              rdfs:subClassOf myfamily:Mammal .
+
+
+###  http://www.w3.org/2002/07/owl#DataProperty
+owl:DataProperty rdf:type owl:Class .
+
+
+###  https://www.wikidata.org/wiki/Q5414
+wde:Q5414 rdf:type owl:Class ;
+          rdfs:subClassOf myfamily:Dog ;
+          rdfs:label "Deense dog"@nl ,
+                     "Deutsche Dogge"@de ,
+                     "Grand danois"@fr ,
+                     "Great Dane"@en .
+
+
+###  https://www.wikidata.org/wiki/Q862089
+wde:Q862089 rdf:type owl:Class ;
+            rdfs:subClassOf myfamily:Mammal ;
+            rdfs:label "Girafe"@fr ,
+                       "Giraffe"@de ,
+                       "Giraffe"@en ,
+                       "Giraffe"@nl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://myfamily.com/ontology/ajeet
+myfamily:ajeet rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:ashen ,
+                               myfamily:pratisha ;
+               wdp:P26 myfamily:renu ;
+               schema:baseSalary "55000.0"^^xsd:double ;
+               schema:familyName "Pramlall" ;
+               schema:givenName "Ajeet" ;
+               schema:height "177"^^xsd:positiveInteger ;
+               rdfs:label "Ajeet Pramlall" .
+
+
+###  http://myfamily.com/ontology/ak
+myfamily:ak rdf:type owl:NamedIndividual ,
+                     myfamily:Male ,
+                     schema:Person .
+
+
+###  http://myfamily.com/ontology/alan
+myfamily:alan rdf:type owl:NamedIndividual ,
+                       myfamily:Male ,
+                       schema:Person ;
+              myfamily:sister myfamily:guna ,
+                              myfamily:maha ,
+                              myfamily:padma ,
+                              myfamily:peter ;
+              schema:birthPlace wde:Q5468 ;
+              schema:children myfamily:kody ,
+                              myfamily:kovanya ,
+                              myfamily:siara ;
+              wdp:P26 myfamily:shareena ;
+              schema:age "56"^^xsd:positiveInteger ;
+              schema:baseSalary "300000.42"^^xsd:double ;
+              schema:birthDate "1964-08-05"^^xsd:date ;
+              schema:deathDate "2005-02-15"^^xsd:date ;
+              schema:familyName "Moodley" ;
+              schema:givenName "Alan" ;
+              schema:height "180"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/anthony
+myfamily:anthony rdf:type owl:NamedIndividual ,
+                          myfamily:Male ,
+                          schema:Person .
+
+
+###  http://myfamily.com/ontology/ashen
+myfamily:ashen rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person .
+
+
+###  http://myfamily.com/ontology/bacchus
+myfamily:bacchus rdf:type owl:NamedIndividual ,
+                          myfamily:Male ,
+                          schema:Person .
+
+
+###  http://myfamily.com/ontology/brian
+myfamily:brian rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:naidene ,
+                               myfamily:natasha ,
+                               myfamily:nicole ;
+               wdp:P26 myfamily:radha ;
+               schema:age "54"^^xsd:positiveInteger ;
+               schema:baseSalary "100000.42"^^xsd:double ;
+               schema:birthDate "1966-05-22"^^xsd:date ;
+               schema:familyName "Govender" ;
+               schema:givenName "Brian" ;
+               schema:height "173"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/colin
+myfamily:colin rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person .
+
+
+###  http://myfamily.com/ontology/daphne
+myfamily:daphne rdf:type owl:NamedIndividual ,
+                         myfamily:Female ,
+                         schema:Person .
+
+
+###  http://myfamily.com/ontology/dean
+myfamily:dean rdf:type owl:NamedIndividual ,
+                       myfamily:Male ,
+                       schema:Person .
+
+
+###  http://myfamily.com/ontology/donny
+myfamily:donny rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person .
+
+
+###  http://myfamily.com/ontology/guna
+myfamily:guna rdf:type owl:NamedIndividual ,
+                       myfamily:Female ,
+                       schema:Person ;
+              myfamily:brother myfamily:alan ,
+                               myfamily:peter ;
+              myfamily:sister myfamily:maha ,
+                              myfamily:padma ;
+              schema:birthPlace wde:Q5468 ;
+              schema:children myfamily:bacchus ,
+                              myfamily:tamara ;
+              wdp:P26 myfamily:anthony ;
+              schema:baseSalary "50000.0"^^xsd:double ;
+              schema:familyName "Anthony" ;
+              schema:givenName "Guna" ;
+              schema:height "173"^^xsd:positiveInteger ;
+              rdfs:label "Guna Anthony" .
+
+
+###  http://myfamily.com/ontology/harri
+myfamily:harri rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:alan ,
+                               myfamily:guna ,
+                               myfamily:padma ,
+                               myfamily:peter ;
+               wdp:P26 myfamily:kamala ;
+               schema:baseSalary "30000.0"^^xsd:double ;
+               schema:familyName "Moodley" ;
+               schema:givenName "Harri" ;
+               schema:height "165"^^xsd:positiveInteger ;
+               rdfs:label "Harri Moodley" .
+
+
+###  http://myfamily.com/ontology/hiblal
+myfamily:hiblal rdf:type owl:NamedIndividual ,
+                         myfamily:Male ,
+                         schema:Person ;
+                schema:birthPlace wde:Q5468 ;
+                schema:children myfamily:ajeet ,
+                                myfamily:shareena ;
+                wdp:P26 myfamily:thana ;
+                schema:baseSalary "66000.22"^^xsd:double ;
+                schema:familyName "Pramlall" ;
+                schema:givenName "Hiblal" ;
+                schema:height "175"^^xsd:positiveInteger ;
+                rdfs:label "Hiblal Pramlall" .
+
+
+###  http://myfamily.com/ontology/judy
+myfamily:judy rdf:type owl:NamedIndividual ,
+                       myfamily:Female ,
+                       schema:Person .
+
+
+###  http://myfamily.com/ontology/kamala
+myfamily:kamala rdf:type owl:NamedIndividual ,
+                         myfamily:Female ,
+                         schema:Person ;
+                schema:birthPlace wde:Q5468 ;
+                schema:children myfamily:alan ,
+                                myfamily:guna ,
+                                myfamily:padma ,
+                                myfamily:peter ;
+                schema:baseSalary "20000.0"^^xsd:double ;
+                schema:familyName "Moodley" ;
+                schema:givenName "Kamala" ;
+                schema:height "173"^^xsd:positiveInteger ;
+                rdfs:label "Kamala Moodley" .
+
+
+###  http://myfamily.com/ontology/kody
+myfamily:kody rdf:type owl:NamedIndividual ,
+                       myfamily:Male ,
+                       schema:Person ;
+              myfamily:hasPet myfamily:smokey ;
+              myfamily:sister myfamily:kovanya ,
+                              myfamily:siara ;
+              schema:birthPlace wde:Q5468 ;
+              wdp:P26 myfamily:nicole ;
+              schema:age "34"^^xsd:positiveInteger ;
+              schema:baseSalary "150000.42"^^xsd:double ;
+              schema:birthDate "1986-05-14+12:25"^^xsd:date ;
+              schema:familyName "Moodley" ;
+              schema:givenName "Kody" ;
+              schema:height "170"^^xsd:positiveInteger ;
+              rdfs:label "Kody Moodley" .
+
+
+###  http://myfamily.com/ontology/kovanya
+myfamily:kovanya rdf:type owl:NamedIndividual ,
+                          myfamily:Female ,
+                          schema:Person ;
+                 myfamily:brother myfamily:kody ;
+                 myfamily:sister myfamily:siara ;
+                 schema:birthPlace wde:Q5468 ;
+                 schema:children myfamily:rihan ,
+                                 myfamily:seranya ;
+                 wdp:P26 myfamily:yash ;
+                 schema:age "34"^^xsd:positiveInteger ;
+                 schema:baseSalary "125000.0"^^xsd:double ;
+                 schema:birthDate "1986-05-14+12:27"^^xsd:date ;
+                 schema:familyName "Moodley" ;
+                 schema:givenName "Kovanya" ;
+                 schema:height "170"^^xsd:positiveInteger ;
+                 rdfs:label "Kovanya Moodley" .
+
+
+###  http://myfamily.com/ontology/maha
+myfamily:maha rdf:type owl:NamedIndividual ,
+                       myfamily:Female ,
+                       schema:Person ;
+              myfamily:brother myfamily:alan ,
+                               myfamily:peter ;
+              myfamily:sister myfamily:guna ,
+                              myfamily:padma ;
+              schema:birthPlace wde:Q5468 ;
+              schema:children myfamily:daphne ,
+                              myfamily:donny ,
+                              myfamily:milli ;
+              wdp:P26 myfamily:ak ;
+              schema:baseSalary "70000.0"^^xsd:double ;
+              schema:familyName "Reddy" ;
+              schema:givenName "Maha" ;
+              schema:height "170"^^xsd:positiveInteger ;
+              rdfs:label "Maha Reddy" .
+
+
+###  http://myfamily.com/ontology/mavis
+myfamily:mavis rdf:type owl:NamedIndividual ,
+                        wde:Q862089 ;
+               schema:height "500"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/michelle
+myfamily:michelle rdf:type owl:NamedIndividual ,
+                           myfamily:Female ,
+                           schema:Person .
+
+
+###  http://myfamily.com/ontology/milli
+myfamily:milli rdf:type owl:NamedIndividual ,
+                        myfamily:Female ,
+                        schema:Person .
+
+
+###  http://myfamily.com/ontology/naidene
+myfamily:naidene rdf:type owl:NamedIndividual ,
+                          myfamily:Female ,
+                          schema:Person ;
+                 myfamily:sister myfamily:natasha ,
+                                 myfamily:nicole ;
+                 schema:birthPlace wde:Q5468 ;
+                 schema:age "28"^^xsd:positiveInteger ;
+                 schema:baseSalary "200000.42"^^xsd:double ;
+                 schema:birthDate "1992-06-08"^^xsd:date ;
+                 schema:familyName "Govender" ;
+                 schema:givenName "Naidene" ;
+                 schema:height "157"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/natasha
+myfamily:natasha rdf:type owl:NamedIndividual ,
+                          myfamily:Female ,
+                          schema:Person ;
+                 myfamily:sister myfamily:naidene ,
+                                 myfamily:nicole ;
+                 schema:birthPlace wde:Q5468 ;
+                 schema:age "22"^^xsd:positiveInteger ;
+                 schema:baseSalary "10000.42"^^xsd:double ;
+                 schema:birthDate "1998-07-15"^^xsd:date ;
+                 schema:familyName "Govender" ;
+                 schema:givenName "Natasha" ;
+                 schema:height "152"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/nicole
+myfamily:nicole rdf:type owl:NamedIndividual ,
+                         myfamily:Female ,
+                         schema:Person ;
+                myfamily:sister myfamily:naidene ,
+                                myfamily:natasha ;
+                schema:birthPlace wde:Q5468 ;
+                wdp:P26 myfamily:kody ;
+                schema:age "33"^^xsd:positiveInteger ;
+                schema:baseSalary "180000.42"^^xsd:double ;
+                schema:birthDate "1987-07-15"^^xsd:date ;
+                schema:familyName "Moodley" ;
+                schema:givenName "Nicole" ;
+                schema:height "160"^^xsd:positiveInteger ;
+                rdfs:label "Nicole Moodley" .
+
+
+###  http://myfamily.com/ontology/padma
+myfamily:padma rdf:type owl:NamedIndividual ,
+                        myfamily:Female ,
+                        schema:Person ;
+               myfamily:brother myfamily:alan ,
+                                myfamily:guna ,
+                                myfamily:peter ;
+               myfamily:sister myfamily:maha ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:samona ;
+               wdp:P26 myfamily:preggie ;
+               schema:baseSalary "75000.0"^^xsd:double ;
+               schema:familyName "Naidoo" ;
+               schema:givenName "Padma" ;
+               schema:height "174"^^xsd:positiveInteger ;
+               rdfs:label "Padma Naidoo" .
+
+
+###  http://myfamily.com/ontology/peter
+myfamily:peter rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person ;
+               myfamily:brother myfamily:alan ;
+               myfamily:sister myfamily:guna ,
+                               myfamily:maha ,
+                               myfamily:padma ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:colin ,
+                               myfamily:dean ,
+                               myfamily:michelle ;
+               wdp:P26 myfamily:judy ;
+               schema:baseSalary "45000.42"^^xsd:double ;
+               schema:familyName "Moodley" ;
+               schema:givenName "Peter" ;
+               schema:height "184"^^xsd:positiveInteger ;
+               rdfs:label "Peter Moodley" .
+
+
+###  http://myfamily.com/ontology/pratisha
+myfamily:pratisha rdf:type owl:NamedIndividual ,
+                           myfamily:Female ,
+                           schema:Person .
+
+
+###  http://myfamily.com/ontology/preggie
+myfamily:preggie rdf:type owl:NamedIndividual ,
+                          myfamily:Male ,
+                          schema:Person .
+
+
+###  http://myfamily.com/ontology/radha
+myfamily:radha rdf:type owl:NamedIndividual ,
+                        myfamily:Female ,
+                        schema:Person ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:naidene ,
+                               myfamily:natasha ,
+                               myfamily:nicole ;
+               schema:age "51"^^xsd:positiveInteger ;
+               schema:baseSalary "60000.42"^^xsd:double ;
+               schema:birthDate "1969-11-20"^^xsd:date ;
+               schema:familyName "Govender" ;
+               schema:givenName "Radha" ;
+               schema:height "152"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/renu
+myfamily:renu rdf:type owl:NamedIndividual ,
+                       myfamily:Female ,
+                       schema:Person .
+
+
+###  http://myfamily.com/ontology/rihan
+myfamily:rihan rdf:type owl:NamedIndividual ,
+                        myfamily:Male ,
+                        schema:Person .
+
+
+###  http://myfamily.com/ontology/samona
+myfamily:samona rdf:type owl:NamedIndividual ,
+                         myfamily:Female ,
+                         schema:Person .
+
+
+###  http://myfamily.com/ontology/seranya
+myfamily:seranya rdf:type owl:NamedIndividual ,
+                          myfamily:Female ,
+                          schema:Person .
+
+
+###  http://myfamily.com/ontology/shareena
+myfamily:shareena rdf:type owl:NamedIndividual ,
+                           myfamily:Female ,
+                           schema:Person ;
+                  myfamily:brother myfamily:ajeet ;
+                  schema:birthPlace wde:Q5468 ;
+                  schema:children myfamily:kody ,
+                                  myfamily:kovanya ,
+                                  myfamily:siara ;
+                  wdp:P26 myfamily:alan ;
+                  schema:age "62"^^xsd:positiveInteger ;
+                  schema:baseSalary "90000.0"^^xsd:double ;
+                  schema:birthDate "1958-11-08"^^xsd:date ;
+                  schema:familyName "Moodley" ;
+                  schema:givenName "Shareena" ;
+                  schema:height "150"^^xsd:positiveInteger ;
+                  rdfs:label "Shareena Moodley" .
+
+
+###  http://myfamily.com/ontology/siara
+myfamily:siara rdf:type owl:NamedIndividual ,
+                        myfamily:Female ,
+                        schema:Person ;
+               myfamily:brother myfamily:kody ;
+               myfamily:hasPet myfamily:mavis ;
+               myfamily:sister myfamily:kovanya ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:rihan ;
+               wdp:P26 myfamily:yeshaav ;
+               schema:age "30"^^xsd:positiveInteger ;
+               schema:baseSalary "137000.0"^^xsd:double ;
+               schema:birthDate "1990-11-02"^^xsd:date ;
+               schema:familyName "Moodley" ;
+               schema:givenName "Siara" ;
+               schema:height "155"^^xsd:positiveInteger ;
+               rdfs:label "Siara Moodley" .
+
+
+###  http://myfamily.com/ontology/smokey
+myfamily:smokey rdf:type owl:NamedIndividual ,
+                         wde:Q5414 ;
+                schema:birthPlace wde:Q3926 ;
+                wdp:P462 wde:Q42519 ;
+                schema:height "90"^^xsd:positiveInteger .
+
+
+###  http://myfamily.com/ontology/tamara
+myfamily:tamara rdf:type owl:NamedIndividual ,
+                         myfamily:Female ,
+                         schema:Person .
+
+
+###  http://myfamily.com/ontology/thana
+myfamily:thana rdf:type owl:NamedIndividual ,
+                        myfamily:Female ,
+                        schema:Person ;
+               schema:birthPlace wde:Q5468 ;
+               schema:children myfamily:ajeet ,
+                               myfamily:shareena ;
+               schema:baseSalary "87000.42"^^xsd:double ;
+               schema:familyName "Pramlall" ;
+               schema:givenName "Thana" ;
+               schema:height "154"^^xsd:positiveInteger ;
+               rdfs:label "Thana Pramlall" .
+
+
+###  http://myfamily.com/ontology/yash
+myfamily:yash rdf:type owl:NamedIndividual ,
+                       myfamily:Male ,
+                       schema:Person .
+
+
+###  http://myfamily.com/ontology/yeshaav
+myfamily:yeshaav rdf:type owl:NamedIndividual ,
+                          myfamily:Male ,
+                          schema:Person .
+
+
+###  http://schema.org/age
+schema:age rdf:type owl:NamedIndividual ,
+                    owl:DataProperty .
+
+
+###  http://schema.org/baseSalary
+schema:baseSalary rdf:type owl:NamedIndividual ,
+                           owl:DataProperty .
+
+
+###  http://schema.org/birthDate
+schema:birthDate rdf:type owl:NamedIndividual ,
+                          owl:DataProperty .
+
+
+###  http://schema.org/deathDate
+schema:deathDate rdf:type owl:NamedIndividual ,
+                          owl:DataProperty .
+
+
+###  http://schema.org/familyName
+schema:familyName rdf:type owl:NamedIndividual ,
+                           owl:DataProperty .
+
+
+###  http://schema.org/givenName
+schema:givenName rdf:type owl:NamedIndividual ,
+                          owl:DataProperty .
+
+
+###  http://schema.org/height
+schema:height rdf:type owl:NamedIndividual ,
+                       owl:DataProperty .
+
+
+###  https://www.wikidata.org/wiki/Q3926
+wde:Q3926 rdf:type owl:NamedIndividual ;
+          rdfs:label "Pretoria" .
+
+
+###  https://www.wikidata.org/wiki/Q42519
+wde:Q42519 rdf:type owl:NamedIndividual ;
+           rdfs:label "Grau"@de ,
+                      "Grey"@en ,
+                      "Grijs"@nl ,
+                      "Gris"@fr .
+
+
+###  https://www.wikidata.org/wiki/Q5468
+wde:Q5468 rdf:type owl:NamedIndividual ;
+          rdfs:label "Durban" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+wde:Q144 rdfs:label "Hond"@nl ,
+                    "Dog"@en ,
+                    "Chien"@fr ,
+                    "Hund"@de .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( myfamily:Dog
+                schema:Person
+                wde:Q862089
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

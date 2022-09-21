@@ -1,7 +1,0 @@
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX schema: <http://schema.org/>
-PREFIX dbo: <http://dbpedia.org/ontology/>
-SELECT ?person ?age
-WHERE {
-    ?person dbo:age ?age .
-} 
