@@ -1,0 +1,40 @@
+Task 1
+
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?name ?author 
+WHERE {
+    ?book a dbo:Book ;
+        dbo:author ?author ;
+        rdfs:label ?name . 
+    FILTER (contains(?name,"grand"))
+} LIMIT 20
+
+Task 2
+Task 2.1.
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+SELECT ?book
+WHERE {
+	?book a dbo:Book ;
+    	rdfs:label ?name .
+	FILTER (langMatches(lang(?name),"en"))
+    FILTER (STRSTARTS(lcase(str(?name)),"she"))
+}
+LIMIT 10
+
+Task 2.2.
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT DISTINCT ?category
+WHERE {
+  ?s a dbo:Book .
+  ?s dbo:author ?author .
+  ?s dct:subject ?category .
+  ?author dbo:birthPlace dbr:Amsterdam .
+  ?s dbo:numberOfPages ?pages .
+  FILTER (?pages < 300)
+}
