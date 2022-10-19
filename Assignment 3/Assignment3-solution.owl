@@ -1,0 +1,298 @@
+@prefix : <http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54> .
+
+<http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#hasName
+:hasName rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#hasPrice
+:hasPrice rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Product ;
+          rdfs:range owl:Thing .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#hasSupplier
+:hasSupplier rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#isLocatedIn
+:isLocatedIn rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.w3id.org/neurodkg/classes#Company> ;
+             rdfs:range :City .
+
+
+###  http://www.w3id.org/neurodkg/classes#hasProfession
+<http://www.w3id.org/neurodkg/classes#hasProfession> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                     rdfs:domain :Person ;
+                                                     rdfs:range <http://www.w3id.org/neurodkg/classes#Specialisation> .
+
+
+###  http://www.w3id.org/neurodkg/classes#hasSpecialisation
+<http://www.w3id.org/neurodkg/classes#hasSpecialisation> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf <http://www.w3id.org/neurodkg/classes#hasProfession> ;
+                                                         rdfs:domain :Person ;
+                                                         rdfs:range <http://www.w3id.org/neurodkg/classes#Specialisation> .
+
+
+###  http://www.w3id.org/neurodkg/classes#provides
+<http://www.w3id.org/neurodkg/classes#provides> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain :Person ;
+                                                rdfs:range <http://www.w3id.org/neurodkg/classes#ProfessionalAdvice> .
+
+
+###  http://www.w3id.org/neurodkg/classes#worksFor
+<http://www.w3id.org/neurodkg/classes#worksFor> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain :Person ;
+                                                rdfs:range <http://www.w3id.org/neurodkg/classes#Company> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#BelgianCity
+:BelgianCity rdf:type owl:Class ;
+             rdfs:subClassOf :City .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#CarPart
+:CarPart rdf:type owl:Class ;
+         rdfs:subClassOf :Product ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasSupplier ;
+                           owl:allValuesFrom [ owl:intersectionOf ( :Supplier
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :isLocatedIn ;
+                                                                      owl:someValuesFrom :GermanCity
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                         ] .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#ChiefIntelligenceOfficer
+:ChiefIntelligenceOfficer rdf:type owl:Class ;
+                          owl:equivalentClass [ owl:intersectionOf ( :Person
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://www.w3id.org/neurodkg/classes#hasProfession> ;
+                                                                       owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#SoftwareEngineering>
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://www.w3id.org/neurodkg/classes#worksFor> ;
+                                                                       owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#Company>
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ;
+                          rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#City
+:City rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Consultant
+:Consultant rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Person
+                                                       [ rdf:type owl:Class ;
+                                                         owl:complementOf [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <http://www.w3id.org/neurodkg/classes#worksFor> ;
+                                                                            owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#Company>
+                                                                          ]
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://www.w3id.org/neurodkg/classes#provides> ;
+                                                         owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#ProfessionalAdvice>
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#DutchCity
+:DutchCity rdf:type owl:Class ;
+           rdfs:subClassOf :City ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isLocatedIn ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :BelgianCity
+                                                               :DutchCity
+                                                               :GermanCity
+                                                             )
+                                               ]
+                           ] .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#GermanCity
+:GermanCity rdf:type owl:Class ;
+            rdfs:subClassOf :City .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Manger
+:Manger rdf:type owl:Class ;
+        rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Person
+:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasName ;
+                                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasPrice ;
+                                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasSupplier ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Supplier
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :isLocatedIn ;
+                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                           owl:unionOf ( :BelgianCity
+                                                                                                         :DutchCity
+                                                                                                         :GermanCity
+                                                                                                       )
+                                                                                         ]
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Supplier
+:Supplier rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.w3id.org/neurodkg/classes#Company> ,
+                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasName ;
+                                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :isLocatedIn ;
+                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                   owl:onClass :City
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://www.w3id.org/neurodkg/classes#BackendDeveloper
+<http://www.w3id.org/neurodkg/classes#BackendDeveloper> rdf:type owl:Class ;
+                                                        owl:equivalentClass [ owl:intersectionOf ( :Person
+                                                                                                   [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                            owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                                                               owl:onProperty <http://www.w3id.org/neurodkg/classes#hasSpecialisation> ;
+                                                                                                                                               owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#GraphicalUserInterface>
+                                                                                                                                             ]
+                                                                                                                          ]
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://www.w3id.org/neurodkg/classes#hasProfession> ;
+                                                                                                                            owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#SoftwareEngineering>
+                                                                                                                          ]
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://www.w3id.org/neurodkg/classes#hasSpecialisation> ;
+                                                                                                                            owl:someValuesFrom <http://www.w3id.org/neurodkg/classes#ServerSideSoftware>
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ]
+                                                                                                 ) ;
+                                                                              rdf:type owl:Class
+                                                                            ] ;
+                                                        rdfs:subClassOf :Person .
+
+
+###  http://www.w3id.org/neurodkg/classes#Company
+<http://www.w3id.org/neurodkg/classes#Company> rdf:type owl:Class .
+
+
+###  http://www.w3id.org/neurodkg/classes#GraphicalUserInterface
+<http://www.w3id.org/neurodkg/classes#GraphicalUserInterface> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <http://www.w3id.org/neurodkg/classes#SoftwareEngineering> .
+
+
+###  http://www.w3id.org/neurodkg/classes#ProfessionalAdvice
+<http://www.w3id.org/neurodkg/classes#ProfessionalAdvice> rdf:type owl:Class .
+
+
+###  http://www.w3id.org/neurodkg/classes#ServerSideSoftware
+<http://www.w3id.org/neurodkg/classes#ServerSideSoftware> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.w3id.org/neurodkg/classes#SoftwareEngineering> .
+
+
+###  http://www.w3id.org/neurodkg/classes#SoftwareEngineering
+<http://www.w3id.org/neurodkg/classes#SoftwareEngineering> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.w3id.org/neurodkg/classes#Specialisation> .
+
+
+###  http://www.w3id.org/neurodkg/classes#Specialisation
+<http://www.w3id.org/neurodkg/classes#Specialisation> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Amsterdam
+:Amsterdam rdf:type owl:NamedIndividual ,
+                    :DutchCity .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Brussels
+:Brussels rdf:type owl:NamedIndividual ,
+                   :BelgianCity .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Dusseldorf
+:Dusseldorf rdf:type owl:NamedIndividual ,
+                     :GermanCity .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Maastricht
+:Maastricht rdf:type owl:NamedIndividual ,
+                     :DutchCity .
+
+
+###  http://www.semanticweb.org/ozgeerten/ontologies/2022/9/untitled-ontology-54#Munih
+:Munih rdf:type owl:NamedIndividual ,
+                :GermanCity .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BelgianCity
+                :DutchCity
+                :GermanCity
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
